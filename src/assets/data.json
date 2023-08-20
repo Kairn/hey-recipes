@@ -1,0 +1,33 @@
+{
+    "ingredients": [
+        {
+            "id": "",
+            "name": "",
+            "iconUrl": "",
+            "desc": "",
+            "unit": ""
+        }
+    ],
+    "meals": [
+        {
+            "id": "",
+            "name": "",
+            "picUrl": "",
+            "desc": "",
+            "tags": [],
+            "ingredients": [
+                {
+                    "id": "",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "mealTags": [
+        {
+            "id": "",
+            "name": "",
+            "svgUrl": ""
+        }
+    ]
+}
