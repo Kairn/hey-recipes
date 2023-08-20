@@ -3,15 +3,25 @@
 # compiled output
 dist/
 tmp/
+/out-tsc
+/bazel-out
 app/**/*.js
 app/**/*.js.map
 
 # dependencies
 node_modules/
 bower_components/
+npm-debug.log
+yarn-error.log
 
 # IDEs and editors
 .idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
 # misc
 .sass-cache/
@@ -29,6 +39,7 @@ e2e/*.map
 
 # System Files
 .DS_Store/
+Thumbs.db
 
 ### VisualStudioCode ###
 .vscode/*
