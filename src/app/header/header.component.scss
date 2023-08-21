@@ -1,0 +1,47 @@
+.nav-menu {
+    display: none;
+}
+
+.nav-bar {
+    position: sticky;
+}
+
+.nav-spacer-small {
+    flex: 0 1 1rem;
+}
+
+.nav-spacer-right-fill {
+    flex: 1 1 auto;
+}
+
+.nav-button-main {
+    font-size: 20px;
+}
+
+@media (max-width: 1000px) {
+    .nav-bar {
+        justify-content: center;
+    }
+
+    .nav-menu {
+        display: block;
+        position: absolute;
+        left: 0.5rem;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    .nav-button-main {
+        font-size: 16px;
+    }
+
+    .nav-spacer-small {
+        display: none;
+    }
+
+    .nav-spacer-right-fill {
+        display: none;
+    }
+}
