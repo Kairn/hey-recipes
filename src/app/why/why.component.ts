@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './why.component.html',
   styleUrls: ['./why.component.scss']
 })
-export class WhyComponent {
-
-}
+export class WhyComponent { }
