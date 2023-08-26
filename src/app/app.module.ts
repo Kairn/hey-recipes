@@ -11,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -20,6 +21,7 @@ import { HeroComponent } from './hero/hero.component';
 import { HowComponent } from './how/how.component';
 import { MainComponent } from './main/main.component';
 import { ChipsetComponent } from './chipset/chipset.component';
+import { RecipeComponent } from './recipe/recipe.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ChipsetComponent } from './chipset/chipset.component';
     HeroComponent,
     HowComponent,
     MainComponent,
-    ChipsetComponent
+    ChipsetComponent,
+    RecipeComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { ChipsetComponent } from './chipset/chipset.component';
     MatMenuModule,
     MatFormFieldModule,
     MatAutocompleteModule,
-    MatInputModule
+    MatInputModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

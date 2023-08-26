@@ -11,10 +11,21 @@ body {
     background-color: $basic-color;
     color: white;
     overflow-x: hidden;
+    user-select: text;
 }
 
 body {
     height: 100%;
     margin: 64px 0 0 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+button,
+mat-form-field {
+    user-select: none;
 }
