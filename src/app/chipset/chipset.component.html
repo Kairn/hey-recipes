@@ -1,0 +1,50 @@
+<div class="chipset-box">
+    <div class="chipset-title">Beautiful labels</div>
+    <div class="selected-chips">
+        <span class="chip">
+            <span>Chip1</span>
+            <mat-icon>cancel</mat-icon>
+        </span>
+        <span class="chip">
+            <span>ChipAbc</span>
+            <mat-icon>cancel</mat-icon>
+        </span>
+        <span class="chip">
+            <span>Arc</span>
+            <mat-icon>cancel</mat-icon>
+        </span>
+        <span class="chip">
+            <span>Legend</span>
+            <mat-icon>cancel</mat-icon>
+        </span>
+        <span class="chip">
+            <span>Lorem</span>
+            <mat-icon>cancel</mat-icon>
+        </span>
+        <span class="chip">
+            <span>Nobody is safe</span>
+            <mat-icon>cancel</mat-icon>
+        </span>
+    </div>
+    <div class="chips-ac">
+        <mat-form-field appearance="outline">
+            <mat-label>Filter by label</mat-label>
+            <input type="text" placeholder="Try typing label" matInput [formControl]="acControl"
+                [matAutocomplete]="auto">
+            <mat-icon matSuffix>filter_list</mat-icon>
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of acFilteredOptions | async" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+    <div class="chips-add-box">
+        <mat-form-field appearance="outline">
+            <mat-label>New label</mat-label>
+            <input matInput>
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+        <button mat-flat-button color="accent">Add label</button>
+    </div>
+</div>
