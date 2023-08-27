@@ -1,5 +1,7 @@
+@import '../../imports.scss';
+
 #footer-box {
-    background-color: #212121;
+    background-color: $primary-color;
     width: 100%;
     min-height: 95px;
     color: white;
