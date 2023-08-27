@@ -38,7 +38,14 @@
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
-        <div class="ac-buttons"></div>
+        <div class="ac-buttons">
+            <button mat-mini-fab color="primary">
+                <mat-icon>check</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
     </div>
     <div class="chips-add-box">
         <mat-form-field appearance="outline">
@@ -46,6 +53,6 @@
             <input matInput>
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
-        <button mat-flat-button color="accent">Add label</button>
+        <button mat-raised-button color="primary">Add label</button>
     </div>
 </div>
