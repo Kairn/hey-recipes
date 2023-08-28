@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatListModule } from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -49,6 +50,7 @@ import { RecipeComponent } from './recipe/recipe.component';
     MatAutocompleteModule,
     MatInputModule,
     MatExpansionModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

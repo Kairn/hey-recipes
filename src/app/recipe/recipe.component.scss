@@ -1,0 +1,44 @@
+@import '../../imports.scss';
+
+$pic-size: 300px;
+$pic-size-small: 240px;
+
+.recipe-wrapper {
+    width: $recipe-width;
+    margin: 0.5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    &:hover {
+        outline: 2px solid lighten($color: $primary-color, $amount: 0%);
+    }
+
+    >mat-icon {
+        cursor: pointer;
+        display: block;
+        font-size: $pic-size;
+        width: $pic-size;
+        height: $pic-size;
+    }
+}
+
+@media (max-width: 575px) {
+    .recipe-wrapper {
+        width: $recipe-width-small;
+
+        >mat-icon {
+            font-size: $pic-size-small;
+            width: $pic-size-small;
+            height: $pic-size-small;
+        }
+
+        mat-panel-title {
+            font-size: 14px;
+        }
+
+        .recipe-desc {
+            font-size: 12px;
+        }
+    }
+}

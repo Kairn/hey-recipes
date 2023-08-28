@@ -1,3 +1,5 @@
+@import '../../imports.scss';
+
 #main-box {
     border: solid purple;
     min-height: 200px;
@@ -27,8 +29,16 @@ app-chipset {
 
 #meals-container {
     border: solid purple;
-    display: grid;
     min-height: 400px;
+    padding: 1rem 10%;
+    // display: grid;
+    // grid-template-columns: repeat(3, $recipe-width);
+    // grid-template-rows: auto;
+    // column-gap: 50px;
+    // justify-content: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
 }
 
 @media (max-width: 900px) {
@@ -44,5 +54,12 @@ app-chipset {
 
     app-chipset {
         margin: 0.5rem 1.5rem 0.5rem 1rem;
+    }
+}
+
+
+@media (max-width: 575px) {
+    #meals-container {
+        padding: 1rem 5%;
     }
 }
