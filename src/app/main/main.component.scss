@@ -1,5 +1,8 @@
 @import '../../imports.scss';
 
+$result-inner-size: 900px;
+$result-inner-small: 700px;
+
 #main-box {
     border: solid purple;
     min-height: 200px;
@@ -30,7 +33,7 @@ app-chipset {
 #meals-container {
     border: solid purple;
     min-height: 400px;
-    padding: 1rem 8%;
+    padding: 1rem 4rem;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -46,6 +49,89 @@ app-chipset {
     }
 }
 
+#result-container {
+    padding: 2rem 1rem;
+}
+
+#result-actions {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+
+    >button {
+        width: 124px;
+        margin: 0.5rem 1.5rem;
+    }
+}
+
+#results {
+    margin: 3rem 1.5rem 1rem;
+
+    >div {
+        text-align: center;
+        font-size: 22px;
+        margin-bottom: 2rem;
+    }
+
+    >mat-list {
+        background-color: $basic-color;
+        // max-width: 90%;
+        width: $result-inner-size;
+        margin: auto;
+        border-radius: 5px;
+        padding-left: 1.5rem;
+
+        >div {
+            font-size: 20px;
+            font-style: italic;
+        }
+    }
+}
+
+#data-container {
+    padding: 0 1rem;
+}
+
+#data-box {
+    margin: 0 1.5rem;
+
+    >mat-form-field {
+        display: block;
+        width: $result-inner-size;
+        margin: 0.5rem auto 0;
+    }
+}
+
+#data-actions {
+    padding: 0.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    >button {
+        width: 124px;
+        margin: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    #results {
+        >mat-list {
+            width: $result-inner-small;
+        }
+    }
+
+    #data-box {
+        >mat-form-field {
+            width: $result-inner-small;
+        }
+    }
+}
+
 @media (max-width: 900px) {
     app-chipset {
         margin: 0 1.5rem 0 1rem;
@@ -53,6 +139,10 @@ app-chipset {
 }
 
 @media (max-width: 768px) {
+    #title-box {
+        font-size: 28px;
+    }
+
     #chipset-container {
         flex-direction: column;
     }
@@ -64,7 +154,25 @@ app-chipset {
 
 
 @media (max-width: 575px) {
+    #title-box {
+        font-size: 22px;
+    }
+
     #meals-container {
         padding: 1rem 5%;
+    }
+
+    #results {
+        >div {
+            font-size: 20px;
+        }
+
+        >mat-list {
+            padding-left: 1rem;
+
+            >div {
+                font-size: 18px;
+            }
+        }
     }
 }

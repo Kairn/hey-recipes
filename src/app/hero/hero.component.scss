@@ -17,7 +17,7 @@
     align-items: center;
     text-align: center;
 
-    button {
+    >button {
         font-size: 16px;
     }
 }
@@ -47,8 +47,8 @@
     #hero-inner {
         width: 70%;
 
-        button {
-            font-size: 12px;
+        >button {
+            font-size: 14px;
         }
     }
 
@@ -76,10 +76,6 @@
 
     #hero-inner {
         width: 80%;
-
-        button {
-            font-size: 10px;
-        }
     }
 
     #hero-text {

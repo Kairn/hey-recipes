@@ -17,4 +17,105 @@
             <app-recipe></app-recipe>
         </div>
     </div>
+    <div id="result-container">
+        <div id="result-actions">
+            <button mat-raised-button extended color="primary">
+                <mat-icon>favorite</mat-icon>
+                Reset
+            </button>
+            <button mat-raised-button extended color="primary">
+                <mat-icon>favorite</mat-icon>
+                Roll 1
+            </button>
+            <button mat-raised-button extended color="primary">
+                <mat-icon>favorite</mat-icon>
+                Roll 3
+            </button>
+            <button mat-raised-button extended color="primary">
+                <mat-icon>favorite</mat-icon>
+                Checkout
+            </button>
+        </div>
+        <div id="results">
+            <div>Yum! Your meal plan summary is ready</div>
+            <mat-list>
+                <div mat-subheader>Selected recipes</div>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>dinner_dining</mat-icon>
+                    <div matListItemTitle>Meal 1</div>
+                    <div matListItemLine>Quantity: 1</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>dinner_dining</mat-icon>
+                    <div matListItemTitle>Meal 2</div>
+                    <div matListItemLine>Quantity: 1</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>dinner_dining</mat-icon>
+                    <div matListItemTitle>Meal 3</div>
+                    <div matListItemLine>Quantity: 1</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>dinner_dining</mat-icon>
+                    <div matListItemTitle>Meal 4</div>
+                    <div matListItemLine>Quantity: 1</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>dinner_dining</mat-icon>
+                    <div matListItemTitle>Meal 5</div>
+                    <div matListItemLine>Quantity: 1</div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <div mat-subheader>Ingredient shopping list</div>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>spa</mat-icon>
+                    <div matListItemTitle>Ingredient 1</div>
+                    <div matListItemLine>Quantity: 2</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>spa</mat-icon>
+                    <div matListItemTitle>Ingredient 2</div>
+                    <div matListItemLine>Quantity: 3</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>spa</mat-icon>
+                    <div matListItemTitle>Ingredient 3</div>
+                    <div matListItemLine>Quantity: 2</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>spa</mat-icon>
+                    <div matListItemTitle>Ingredient 4</div>
+                    <div matListItemLine>Quantity: 3</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>spa</mat-icon>
+                    <div matListItemTitle>Ingredient 5</div>
+                    <div matListItemLine>Quantity: 1</div>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-icon matListItemIcon>spa</mat-icon>
+                    <div matListItemTitle>Ingredient 6</div>
+                    <div matListItemLine>Quantity: 1</div>
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+    <div id="data-container">
+        <div id="data-box">
+            <mat-form-field>
+                <mat-label>Raw JSON data</mat-label>
+                <textarea rows="30" matInput placeholder="Missing data..."></textarea>
+            </mat-form-field>
+        </div>
+        <div id="data-actions">
+            <button mat-raised-button extended color="primary">
+                <mat-icon>favorite</mat-icon>
+                Edit
+            </button>
+            <button mat-raised-button extended disabled="" color="primary">
+                Apply
+                <mat-icon>favorite</mat-icon>
+            </button>
+        </div>
+    </div>
 </div>
