@@ -1,7 +1,12 @@
 @import '../../imports.scss';
 
-$pic-size: 300px;
-$pic-size-small: 240px;
+mat-expansion-panel.recipe-sel {
+    background-color: $primary-color;
+}
+
+mat-expansion-panel.recipe-unsel {
+    background-color: $basic-color;
+}
 
 .recipe-wrapper {
     width: $recipe-width;
@@ -9,29 +14,38 @@ $pic-size-small: 240px;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+}
 
-    &:hover {
-        outline: 2px solid lighten($color: $primary-color, $amount: 0%);
-    }
+.recipe-header {
+    display: flex;
+    align-items: center;
 
     >mat-icon {
-        cursor: pointer;
-        display: block;
         font-size: $pic-size;
         width: $pic-size;
         height: $pic-size;
     }
 }
 
-@media (max-width: 575px) {
+.recipe-choose-box {
+    padding: 15% 0;
+    width: calc($recipe-width - $pic-size);
+    height: $pic-size;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    >span {
+        user-select: none;
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 676px) {
     .recipe-wrapper {
         width: $recipe-width-small;
-
-        >mat-icon {
-            font-size: $pic-size-small;
-            width: $pic-size-small;
-            height: $pic-size-small;
-        }
 
         mat-panel-title {
             font-size: 14px;
@@ -39,6 +53,35 @@ $pic-size-small: 240px;
 
         .recipe-desc {
             font-size: 12px;
+        }
+    }
+
+    .recipe-header {
+        >mat-icon {
+            font-size: $pic-size-small;
+            width: $pic-size-small;
+            height: $pic-size-small;
+        }
+    }
+
+    .recipe-choose-box {
+        padding: 10% 0;
+        width: calc($recipe-width-small - $pic-size-small);
+        height: $pic-size-small;
+
+        >button {
+            width: 48px;
+            height: 48px;
+
+            >mat-icon {
+                font-size: 20px;
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        >span {
+            font-size: 18px;
         }
     }
 }

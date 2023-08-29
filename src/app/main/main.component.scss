@@ -30,15 +30,20 @@ app-chipset {
 #meals-container {
     border: solid purple;
     min-height: 400px;
-    padding: 1rem 10%;
-    // display: grid;
-    // grid-template-columns: repeat(3, $recipe-width);
-    // grid-template-rows: auto;
-    // column-gap: 50px;
-    // justify-content: center;
+    padding: 1rem 8%;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: flex-start;
+
+    >div {
+        outline: solid pink;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 0 3rem;
+    }
 }
 
 @media (max-width: 900px) {

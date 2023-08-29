@@ -1,6 +1,17 @@
 <div class="recipe-wrapper">
-    <mat-icon fontIcon="room_service"></mat-icon>
-    <mat-expansion-panel>
+    <div class="recipe-header">
+        <mat-icon fontIcon="room_service"></mat-icon>
+        <div class="recipe-choose-box">
+            <button mat-fab color="primary">
+                <mat-icon>arrow_upward</mat-icon>
+            </button>
+            <span>0</span>
+            <button mat-fab disabled>
+                <mat-icon>arrow_downward</mat-icon>
+            </button>
+        </div>
+    </div>
+    <mat-expansion-panel class="recipe-unsel">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 Simply yum meal
