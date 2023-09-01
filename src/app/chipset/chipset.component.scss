@@ -90,12 +90,13 @@ $side-btn-width: 102px;
     justify-content: space-between;
     align-items: center;
     width: $side-btn-width;
-    padding: 0 5px;
+    padding: 0 5px 0 10px;
     height: 56px;
     margin-bottom: 0.5rem;
 }
 
 .chips-add-box {
+    display: none; // No longer used
     width: 95%;
     align-self: flex-start;
     padding-left: 0.5rem;
@@ -141,10 +142,16 @@ $side-btn-width: 102px;
 
     .chips-ac {
         justify-content: center;
+
+        .ac-buttons {
+            justify-content: center;
+            padding: 0 5px;
+        }
     }
 
     .chips-add-box {
-        display: flex;
+        // display: flex;
+        display: none;
         flex-direction: column;
         justify-content: center;
         align-items: center;

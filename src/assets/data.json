@@ -1,11 +1,14 @@
 {
+    "tags": [
+        {
+            "id": "",
+            "name": ""
+        }
+    ],
     "ingredients": [
         {
             "id": "",
-            "name": "",
-            "iconUrl": "",
-            "desc": "",
-            "unit": ""
+            "name": ""
         }
     ],
     "meals": [
@@ -21,13 +24,6 @@
                     "quantity": 1
                 }
             ]
-        }
-    ],
-    "mealTags": [
-        {
-            "id": "",
-            "name": "",
-            "svgUrl": ""
         }
     ]
 }

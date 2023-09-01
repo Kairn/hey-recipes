@@ -29,3 +29,9 @@ button,
 mat-form-field {
     user-select: none;
 }
+
+a {
+    color: unset;
+    text-decoration: none;
+    cursor: unset;
+}

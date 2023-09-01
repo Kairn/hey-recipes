@@ -16,7 +16,6 @@ $result-inner-small: 700px;
 }
 
 #chipset-container {
-    border: solid purple;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,7 +30,6 @@ app-chipset {
 }
 
 #meals-container {
-    border: solid purple;
     min-height: 400px;
     padding: 1rem 4rem;
     display: flex;
@@ -40,7 +38,6 @@ app-chipset {
     align-items: flex-start;
 
     >div {
-        outline: solid pink;
         display: flex;
         flex-flow: column nowrap;
         justify-content: flex-start;

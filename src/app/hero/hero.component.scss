@@ -8,7 +8,6 @@
 }
 
 #hero-inner {
-    border: solid red;
     width: 60%;
     height: 65%;
     display: flex;
@@ -17,7 +16,7 @@
     align-items: center;
     text-align: center;
 
-    >button {
+    >a>button {
         font-size: 16px;
     }
 }
@@ -47,7 +46,7 @@
     #hero-inner {
         width: 70%;
 
-        >button {
+        >a>button {
             font-size: 14px;
         }
     }
