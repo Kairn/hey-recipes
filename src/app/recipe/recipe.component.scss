@@ -20,8 +20,7 @@ mat-expansion-panel.recipe-unsel {
     display: flex;
     align-items: center;
 
-    >mat-icon {
-        font-size: $pic-size;
+    >img {
         width: $pic-size;
         height: $pic-size;
     }
@@ -57,8 +56,7 @@ mat-expansion-panel.recipe-unsel {
     }
 
     .recipe-header {
-        >mat-icon {
-            font-size: $pic-size-small;
+        >img {
             width: $pic-size-small;
             height: $pic-size-small;
         }
