@@ -1,8 +1,9 @@
 <div id="main-box">
     <div id="title-box">Explore delicious treats</div>
     <div id="chipset-container">
-        <app-chipset></app-chipset>
-        <app-chipset></app-chipset>
+        <app-chipset [type]="'tag'" [all_chips]="all_tags" [filtered_chips]="filtered_tags"></app-chipset>
+        <app-chipset [type]="'ingredient'" [all_chips]="all_ingredients"
+            [filtered_chips]="filtered_ingredients"></app-chipset>
     </div>
     <div id="meals-container">
         <div>
