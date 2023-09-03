@@ -1,44 +1,28 @@
 <div class="recipe-wrapper">
     <div class="recipe-header">
-        <img src="../../assets/meal-placeholder.svg" alt="meal-placeholder">
+        <img [src]="picUrl" alt="meal-placeholder">
         <div class="recipe-choose-box">
-            <button mat-fab color="primary">
+            <button mat-fab color="primary" [disabled]="meal.amount >= 10" (click)="moreMeal()">
                 <mat-icon>arrow_upward</mat-icon>
             </button>
-            <span>0</span>
-            <button mat-fab disabled>
+            <span>{{meal.amount}}</span>
+            <button mat-fab [disabled]="meal.amount < 1" (click)="fewerMeal()">
                 <mat-icon>arrow_downward</mat-icon>
             </button>
         </div>
     </div>
-    <mat-expansion-panel class="recipe-unsel">
+    <mat-expansion-panel [ngClass]="{'recipe-unsel': meal.amount < 1, 'recipe-sel': meal.amount > 0}">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Simply yum meal
+                {{meal.name}}
             </mat-panel-title>
         </mat-expansion-panel-header>
-        <div class="recipe-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque totam amet quod
-            quaerat, fuga illo mollitia cumque vero fugit ex soluta, ipsam placeat rerum quibusdam.</div>
+        <div class="recipe-desc">{{meal.desc}}</div>
         <mat-list>
-            <mat-list-item>
+            <mat-list-item *ngFor="let ingredient of meal.ingredients">
                 <mat-icon matListItemIcon>note</mat-icon>
-                <div matListItemTitle>Ingredient 1</div>
-                <div matListItemLine>Quantity: 1</div>
-            </mat-list-item>
-            <mat-list-item>
-                <mat-icon matListItemIcon>note</mat-icon>
-                <div matListItemTitle>Ingredient 2</div>
-                <div matListItemLine>Quantity: 1</div>
-            </mat-list-item>
-            <mat-list-item>
-                <mat-icon matListItemIcon>note</mat-icon>
-                <div matListItemTitle>Ingredient 3</div>
-                <div matListItemLine>Quantity: 1</div>
-            </mat-list-item>
-            <mat-list-item>
-                <mat-icon matListItemIcon>note</mat-icon>
-                <div matListItemTitle>Ingredient 4</div>
-                <div matListItemLine>Quantity: 1</div>
+                <div matListItemTitle>{{getIngredientName(ingredient.id)}}</div>
+                <div matListItemLine>Quantity: {{ingredient.quantity}}</div>
             </mat-list-item>
         </mat-list>
     </mat-expansion-panel>

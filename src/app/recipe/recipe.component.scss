@@ -4,7 +4,7 @@ mat-expansion-panel.recipe-sel {
     background-color: $primary-color;
 }
 
-mat-expansion-panel.recipe-unsel {
+mat-expansion-panel-header.recipe-unsel {
     background-color: $basic-color;
 }
 
@@ -14,6 +14,10 @@ mat-expansion-panel.recipe-unsel {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+
+    >mat-expansion-panel {
+        width: 100%;
+    }
 }
 
 .recipe-header {

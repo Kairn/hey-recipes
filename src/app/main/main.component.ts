@@ -21,7 +21,7 @@ export interface Meal {
   readonly desc: string;
   readonly tags: number[];
   readonly ingredients: Ingredient[];
-  readonly amount: number;
+  amount: number;
 }
 
 @Component({

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Chip, Meal } from '../main/main.component';
 
@@ -9,14 +9,26 @@ import { Chip, Meal } from '../main/main.component';
 })
 export class RecipeComponent implements OnInit {
 
-  all_ingredients!: Chip[];
-  meal!: Meal;
+  @Input() allIngredients!: Chip[];
+  @Input() meal!: Meal;
+
+  picUrl!: string;
 
   ngOnInit(): void {
+    this.meal.amount = 0;
+    this.picUrl = this.meal.picUrl ? this.meal.picUrl : '../../assets/meal-placeholder.svg';
+  }
+
+  moreMeal() {
+    this.meal.amount++;
+  }
+
+  fewerMeal() {
+    this.meal.amount--;
   }
 
   getIngredientName(id: number): string {
-    for (let ingredient of this.all_ingredients) {
+    for (let ingredient of this.allIngredients) {
       if (ingredient.id === id) {
         return ingredient.name;
       }

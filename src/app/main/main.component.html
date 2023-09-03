@@ -8,15 +8,10 @@
     </div>
     <div id="meals-container">
         <div>
-            <app-recipe></app-recipe>
-            <app-recipe></app-recipe>
-            <app-recipe></app-recipe>
-            <app-recipe></app-recipe>
+            <app-recipe *ngFor="let meal of leftMeals" [allIngredients]="allIngredients" [meal]="meal"></app-recipe>
         </div>
         <div>
-            <app-recipe></app-recipe>
-            <app-recipe></app-recipe>
-            <app-recipe></app-recipe>
+            <app-recipe *ngFor="let meal of rightMeals" [allIngredients]="allIngredients" [meal]="meal"></app-recipe>
         </div>
     </div>
     <div id="result-container">
