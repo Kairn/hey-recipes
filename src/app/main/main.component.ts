@@ -14,6 +14,11 @@ export interface Ingredient {
   readonly quantity: number;
 }
 
+export interface IngredientDisplay {
+  readonly name: string;
+  quantity: number;
+}
+
 export interface Meal {
   readonly id: number;
   readonly name: string;
@@ -47,6 +52,12 @@ export class MainComponent implements OnInit {
   leftMeals!: Meal[];
   rightMeals!: Meal[];
 
+  mealsRollup: Meal[] = [];
+  ingredientsRollup: IngredientDisplay[] = [];
+
+  showSummary = false;
+  showRawData = false;
+
   ngOnInit(): void {
     // TODO: Load data from cookies
 
@@ -63,6 +74,47 @@ export class MainComponent implements OnInit {
 
   processChipChange(change: ChipChange) {
     console.log(change);
+  }
+
+  doSummary() {
+    this.mealsRollup = [];
+    this.ingredientsRollup = [];
+
+    let iMap = new Map<string, number>();
+    for (let meal of this.filteredMeals) {
+      if (meal.amount < 1) {
+        continue;
+      }
+      this.mealsRollup.push(meal);
+      for (let ingredient of meal.ingredients) {
+        let iName = this._getIngredientName(ingredient.id);
+        let iQuan = iMap.get(iName);
+        iMap.set(iName, iQuan ? iQuan + ingredient.quantity * meal.amount : ingredient.quantity * meal.amount);
+      }
+    }
+
+    if (this.mealsRollup.length > 0) {
+      iMap.forEach((v, k) => this.ingredientsRollup.push({
+        name: k,
+        quantity: v,
+      }))
+      this.ingredientsRollup.sort((i1, i2) => i1.name.localeCompare(i2.name));
+      this.showSummary = true;
+    }
+  }
+
+  resetSummary() {
+    this.allMeals.forEach(meal => meal.amount = 0);
+    this.showSummary = false;
+  }
+
+  openRawData() {
+    this.showRawData = true;
+  }
+
+  applyRawData() {
+    console.log("Applying JSON...");
+    this.showRawData = false;
   }
 
   private _filterMeals() {
@@ -84,6 +136,15 @@ export class MainComponent implements OnInit {
     for (let i = this.filteredMeals.length - rightCount; i < this.filteredMeals.length; ++i) {
       this.rightMeals.push(this.filteredMeals[i]);
     }
+  }
+
+  private _getIngredientName(id: number): string {
+    for (let ingredient of this.allIngredients) {
+      if (id === ingredient.id) {
+        return ingredient.name;
+      }
+    }
+    return '';
   }
 
   _dbg() {
