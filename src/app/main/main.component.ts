@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import { ChipChange, ChipType } from '../chipset/chipset.component';
 
@@ -29,14 +29,28 @@ export interface Meal {
   amount: number;
 }
 
+export class RawData {
+  tags: Chip[];
+  ingredients: Chip[];
+  meals: Meal[];
+
+  constructor(rawData: any) {
+    this.tags = rawData['tags'];
+    this.ingredients = rawData['ingredients'];
+    this.meals = rawData['meals'];
+  }
+}
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, AfterViewInit {
 
-  private rawData: any = rawData;
+  private rawData!: RawData;
+  private readonly defaultData!: RawData;
+  rawDataDisplay = '';
 
   readonly TAG = ChipType.TAG;
   readonly INGREDIENT = ChipType.INGREDIENT;
@@ -58,18 +72,21 @@ export class MainComponent implements OnInit {
   showSummary = false;
   showRawData = false;
 
+  @ViewChild('rawDataInput') rawDataInput!: ElementRef<HTMLInputElement>;
+
+  constructor() {
+    this.rawData = new RawData(rawData);
+    this.defaultData = new RawData(rawData);
+  }
+
   ngOnInit(): void {
     // TODO: Load data from cookies
 
-    this.allTags = this.rawData['tags'];
-    this.allIngredients = this.rawData['ingredients'];
-    this.allMeals = this.rawData['meals'];
+    this._reloadRawData();
+  }
 
-    this.filteredTags = [];
-    this.filteredIngredients = [];
-    this.filteredMeals = [];
-
-    this._filterMeals();
+  ngAfterViewInit(): void {
+    // Child is set
   }
 
   processChipChange(change: ChipChange) {
@@ -109,11 +126,18 @@ export class MainComponent implements OnInit {
   }
 
   openRawData() {
+    this.rawDataDisplay = JSON.stringify(this.rawData);
     this.showRawData = true;
   }
 
   applyRawData() {
-    console.log("Applying JSON...");
+    try {
+      let tempData = JSON.parse(this.rawDataInput.nativeElement.value);
+      this.rawData = tempData;
+      this._reloadRawData();
+    } catch (error) {
+      console.error("Cannot parse raw JSON.");
+    }
     this.showRawData = false;
   }
 
@@ -147,8 +171,21 @@ export class MainComponent implements OnInit {
     return '';
   }
 
+  private _reloadRawData() {
+    this.allTags = this.rawData['tags'];
+    this.allIngredients = this.rawData['ingredients'];
+    this.allMeals = this.rawData['meals'];
+
+    this.filteredTags = [];
+    this.filteredIngredients = [];
+    this.filteredMeals = [];
+
+    this._filterMeals();
+  }
+
   _dbg() {
     console.log(this.filteredIngredients);
     console.log(this.filteredTags);
+    console.log(this.filteredMeals);
   }
 }

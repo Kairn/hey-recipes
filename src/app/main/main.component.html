@@ -56,7 +56,8 @@
         <div id="data-box" *ngIf="showRawData">
             <mat-form-field>
                 <mat-label>Raw JSON data</mat-label>
-                <textarea rows="30" matInput placeholder="Missing data..."></textarea>
+                <textarea rows="30" matInput #rawDataInput placeholder="Missing data..."
+                    [value]="rawDataDisplay"></textarea>
             </mat-form-field>
         </div>
         <div id="data-actions">
