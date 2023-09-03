@@ -1,11 +1,11 @@
 <div class="chipset-box">
     <div class="chipset-title">{{title}}</div>
     <div class="selected-chips">
-        <span *ngFor="let chip of filtered_chips" class="chip">
+        <span *ngFor="let chip of filteredChips" class="chip">
             <span>{{chip.name}}</span>
             <mat-icon (click)="removeChip(chip.id)">cancel</mat-icon>
         </span>
-        <span *ngIf="filtered_chips.length === 0" class="chip">
+        <span *ngIf="filteredChips.length === 0" class="chip">
             <span>ALL</span>
         </span>
     </div>

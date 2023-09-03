@@ -1,12 +1,20 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
-
-import { Chip } from '../main/main.component';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
-const TAG = 'tag';
-const INGREDIENT = 'ingredient';
+import { Chip } from '../main/main.component';
+
+export enum ChipType {
+  TAG = 'tag',
+  INGREDIENT = 'ingredient'
+}
+
+export interface ChipChange {
+  readonly type: ChipType;
+  readonly id: number;
+  readonly isAdd: boolean;
+}
 
 @Component({
   selector: 'app-chipset',
@@ -15,9 +23,11 @@ const INGREDIENT = 'ingredient';
 })
 export class ChipsetComponent implements OnInit, AfterViewInit {
 
-  @Input() type!: string;
-  @Input() all_chips!: Chip[];
-  @Input() filtered_chips!: Chip[];
+  @Input() type!: ChipType;
+  @Input() allChips!: Chip[];
+  @Input() filteredChips!: Chip[];
+
+  @Output() chipChangeEvent = new EventEmitter<ChipChange>();
 
   title!: string;
   acLabel!: string;
@@ -28,14 +38,14 @@ export class ChipsetComponent implements OnInit, AfterViewInit {
   @ViewChild('chipInput') chipInput!: ElementRef<HTMLInputElement>;
 
   ngOnInit() {
-    this.title = this.type === TAG ? "Filter by tags" : "Filter by ingredients";
-    this.acLabel = this.type === TAG ? "Tags" : "Ingredients";
+    this.title = this.type === ChipType.TAG ? "Filter by tags" : "Filter by ingredients";
+    this.acLabel = this.type === ChipType.TAG ? "Tags" : "Ingredients";
     this.acFilteredOptions = this.acControl.valueChanges.pipe(
       startWith(''),
       map(value => this._ac_filter(value || '')),
     );
-    this.chipOptions = this.all_chips.filter(chip => {
-      return !this.filtered_chips.map(fc => fc.id).includes(chip.id);
+    this.chipOptions = this.allChips.filter(chip => {
+      return !this.filteredChips.map(fc => fc.id).includes(chip.id);
     }).map(chip => chip.name);
   }
 
@@ -44,23 +54,35 @@ export class ChipsetComponent implements OnInit, AfterViewInit {
   }
 
   addChip(event: MatAutocompleteSelectedEvent) {
-    for (let chip of this.all_chips) {
+    let id = -1;
+    for (let chip of this.allChips) {
       if (chip.name === event.option.value) {
-        this.filtered_chips.push(chip);
+        id = chip.id;
+        this.filteredChips.push(chip);
         break;
       }
     }
     this._ac_update();
+    this.chipChangeEvent.emit({
+      type: this.type,
+      id,
+      isAdd: true,
+    });
   }
 
   removeChip(id: number) {
-    this.filtered_chips = this.filtered_chips.filter(chip => chip.id !== id);
+    this.filteredChips = this.filteredChips.filter(chip => chip.id !== id);
     this._ac_update();
+    this.chipChangeEvent.emit({
+      type: this.type,
+      id,
+      isAdd: false,
+    });
   }
 
   private _ac_update() {
-    this.chipOptions = this.all_chips.filter(chip => {
-      return !this.filtered_chips.map(fc => fc.id).includes(chip.id);
+    this.chipOptions = this.allChips.filter(chip => {
+      return !this.filteredChips.map(fc => fc.id).includes(chip.id);
     }).map(chip => chip.name);
     this.chipInput.nativeElement.value = '';
     this.acControl.setValue(null);

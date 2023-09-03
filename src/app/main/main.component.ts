@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as raw_data from '../../assets/data.json';
+import { ChipChange, ChipType } from '../chipset/chipset.component';
+
+import * as rawData from '../../assets/data.json';
 
 export interface Chip {
   readonly id: number;
@@ -29,23 +31,63 @@ export interface Meal {
 })
 export class MainComponent implements OnInit {
 
-  private raw_data: any = raw_data;
+  private rawData: any = rawData;
 
-  all_tags!: Chip[];
-  all_ingredients!: Chip[];
-  meals!: Meal[];
+  readonly TAG = ChipType.TAG;
+  readonly INGREDIENT = ChipType.INGREDIENT;
 
-  filtered_tags!: Chip[];
-  filtered_ingredients!: Chip[];
+  allTags!: Chip[];
+  allIngredients!: Chip[];
+  allMeals!: Meal[];
+
+  filteredTags!: Chip[];
+  filteredIngredients!: Chip[];
+  filteredMeals!: Meal[];
+
+  leftMeals!: Meal[];
+  rightMeals!: Meal[];
 
   ngOnInit(): void {
     // TODO: Load data from cookies
 
-    this.all_tags = this.raw_data['tags'];
-    this.all_ingredients = this.raw_data['ingredients'];
-    this.meals = this.raw_data['meals'];
+    this.allTags = this.rawData['tags'];
+    this.allIngredients = this.rawData['ingredients'];
+    this.allMeals = this.rawData['meals'];
 
-    this.filtered_tags = [];
-    this.filtered_ingredients = [];
+    this.filteredTags = [];
+    this.filteredIngredients = [];
+    this.filteredMeals = [];
+
+    this._filterMeals();
+  }
+
+  processChipChange(change: ChipChange) {
+    console.log(change);
+  }
+
+  private _filterMeals() {
+    this.filteredMeals = this.allMeals.filter(meal => this._isMealDisplay(meal));
+    this._distributeMeals();
+  }
+
+  private _isMealDisplay(meal: Meal): boolean {
+    return true;
+  }
+
+  private _distributeMeals() {
+    this.leftMeals = [];
+    this.rightMeals = [];
+    let rightCount = Math.floor(this.filteredMeals.length / 2);
+    for (let i = 0; i < this.filteredMeals.length - rightCount; ++i) {
+      this.leftMeals.push(this.filteredMeals[i]);
+    }
+    for (let i = this.filteredMeals.length - rightCount; i < this.filteredMeals.length; ++i) {
+      this.rightMeals.push(this.filteredMeals[i]);
+    }
+  }
+
+  _dbg() {
+    console.log(this.filteredIngredients);
+    console.log(this.filteredTags);
   }
 }
