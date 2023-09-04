@@ -12,8 +12,7 @@ export enum ChipType {
 
 export interface ChipChange {
   readonly type: ChipType;
-  readonly id: number;
-  readonly isAdd: boolean;
+  readonly filteredChips: Chip[];
 }
 
 @Component({
@@ -54,10 +53,10 @@ export class ChipsetComponent implements OnInit, AfterViewInit {
   }
 
   addChip(event: MatAutocompleteSelectedEvent) {
-    let id = -1;
+    let addedChip = null;
     for (let chip of this.allChips) {
       if (chip.name === event.option.value) {
-        id = chip.id;
+        addedChip = chip;
         this.filteredChips.push(chip);
         break;
       }
@@ -65,8 +64,7 @@ export class ChipsetComponent implements OnInit, AfterViewInit {
     this._ac_update();
     this.chipChangeEvent.emit({
       type: this.type,
-      id,
-      isAdd: true,
+      filteredChips: this.filteredChips,
     });
   }
 
@@ -75,8 +73,7 @@ export class ChipsetComponent implements OnInit, AfterViewInit {
     this._ac_update();
     this.chipChangeEvent.emit({
       type: this.type,
-      id,
-      isAdd: false,
+      filteredChips: this.filteredChips,
     });
   }
 

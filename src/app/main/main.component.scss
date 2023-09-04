@@ -40,6 +40,14 @@ app-chipset {
     align-items: flex-start;
     margin-bottom: 1rem;
 
+    &.no-meals {
+        min-height: 100px;
+    }
+
+    #no-meals {
+        font-size: 18px;
+    }
+
     >div {
         display: flex;
         flex-flow: column nowrap;

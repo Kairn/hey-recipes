@@ -6,11 +6,12 @@
         <app-chipset [type]="INGREDIENT" [allChips]="allIngredients" [filteredChips]="filteredIngredients"
             (chipChangeEvent)="processChipChange($event)"></app-chipset>
     </div>
-    <div id="meals-container">
-        <div>
+    <div id="meals-container" [ngClass]="{'no-meals': leftMeals.length < 1}">
+        <div id="no-meals" *ngIf="leftMeals.length < 1">Oops, no meals found 😔</div>
+        <div *ngIf="leftMeals.length > 0">
             <app-recipe *ngFor="let meal of leftMeals" [allIngredients]="allIngredients" [meal]="meal"></app-recipe>
         </div>
-        <div>
+        <div *ngIf="rightMeals.length > 0">
             <app-recipe *ngFor="let meal of rightMeals" [allIngredients]="allIngredients" [meal]="meal"></app-recipe>
         </div>
     </div>
@@ -20,11 +21,11 @@
                 <mat-icon>favorite</mat-icon>
                 Reset
             </button>
-            <button mat-raised-button extended color="primary">
+            <button mat-raised-button extended color="primary" [disabled]="leftMeals.length < 1">
                 <mat-icon>favorite</mat-icon>
                 Roll 1
             </button>
-            <button mat-raised-button extended color="primary">
+            <button mat-raised-button extended color="primary" [disabled]="filteredMeals.length < 3">
                 <mat-icon>favorite</mat-icon>
                 Roll 3
             </button>

@@ -84,7 +84,13 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   processChipChange(change: ChipChange) {
-    console.log(change);
+    if (change.type === this.TAG) {
+      this.filteredTags = change.filteredChips;
+    } else if (change.type === this.INGREDIENT) {
+      this.filteredIngredients = change.filteredChips;
+    }
+
+    this._filterMeals();
   }
 
   doSummary() {
@@ -111,11 +117,17 @@ export class MainComponent implements OnInit, AfterViewInit {
       }))
       this.ingredientsRollup.sort((i1, i2) => i1.name.localeCompare(i2.name));
       this.showSummary = true;
+    } else {
+      this.showSummary = false;
     }
   }
 
   resetSummary() {
     this.allMeals.forEach(meal => meal.amount = 0);
+    this.filteredTags = [];
+    this.filteredIngredients = [];
+    this.filteredMeals = this.allMeals.filter(m => true);
+    this._distributeMeals();
     this.showSummary = false;
   }
 
@@ -144,7 +156,29 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   private _isMealDisplay(meal: Meal): boolean {
-    return true;
+    let display = true;
+    let tList = this.filteredTags.map(t => t.id);
+    let iList = this.filteredIngredients.map(i => i.id);
+
+    if (tList.length > 0) {
+      display = false;
+      for (let tag of meal.tags) {
+        if (tList.includes(tag)) {
+          return true;
+        }
+      }
+    }
+
+    if (iList.length > 0) {
+      display = false;
+      for (let ingredient of meal.ingredients) {
+        if (iList.includes(ingredient.id)) {
+          return true;
+        }
+      }
+    }
+
+    return display;
   }
 
   private _distributeMeals() {
