@@ -1,8 +1,6 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 import { ChipChange, ChipType } from '../chipset/chipset.component';
-
-import * as rawData from '../../assets/data.json';
 
 export interface Chip {
   readonly id: number;
@@ -48,9 +46,11 @@ export class RawData {
 })
 export class MainComponent implements OnInit, AfterViewInit {
 
-  private rawData!: RawData;
-  private readonly defaultData!: RawData;
+  private _defaultData!: RawData;
+
+  @Input() rawData!: RawData;
   rawDataDisplay = '';
+  @Output() rawDataUpdateEvent = new EventEmitter<RawData>();
 
   readonly TAG = ChipType.TAG;
   readonly INGREDIENT = ChipType.INGREDIENT;
@@ -74,14 +74,8 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   @ViewChild('rawDataInput') rawDataInput!: ElementRef<HTMLInputElement>;
 
-  constructor() {
-    this.rawData = new RawData(rawData);
-    this.defaultData = new RawData(rawData);
-  }
-
   ngOnInit(): void {
-    // TODO: Load data from cookies
-
+    this._defaultData = this.rawData;
     this._reloadRawData();
   }
 
@@ -137,8 +131,11 @@ export class MainComponent implements OnInit, AfterViewInit {
       this._reloadRawData();
     } catch (error) {
       console.error("Cannot parse raw JSON.");
+      this.rawData = this._defaultData;
+      this._reloadRawData();
     }
     this.showRawData = false;
+    this.rawDataUpdateEvent.emit(this.rawData);
   }
 
   private _filterMeals() {
@@ -184,8 +181,6 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   _dbg() {
-    console.log(this.filteredIngredients);
-    console.log(this.filteredTags);
-    console.log(this.filteredMeals);
+    // Debug print
   }
 }

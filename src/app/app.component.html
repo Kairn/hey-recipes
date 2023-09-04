@@ -1,10 +1,10 @@
 <div id="app-box">
     <router-outlet></router-outlet>
-    <app-header></app-header>
+    <app-header [rawData]="rawData"></app-header>
     <app-hero></app-hero>
     <app-why></app-why>
     <app-how></app-how>
-    <app-main></app-main>
+    <app-main [rawData]="rawData" (rawDataUpdateEvent)="updateRawData($event)"></app-main>
     <!-- <div id="app-box-spacer"></div> -->
     <app-footer></app-footer>
 </div>

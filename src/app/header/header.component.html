@@ -34,7 +34,7 @@
         </button>
     </a>
     <span class="nav-spacer-right-fill"></span>
-    <button mat-button color="basic" class="nav-button">
+    <button mat-button color="basic" class="nav-button" (click)="capture()">
         <mat-icon>camera</mat-icon>
         Capture
     </button>
@@ -64,7 +64,7 @@
             Custom Deployment
         </button>
     </a>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="capture()">
         <mat-icon>camera</mat-icon>
         Capture
     </button>

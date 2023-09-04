@@ -13,6 +13,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -51,6 +52,7 @@ import { RecipeComponent } from './recipe/recipe.component';
     MatInputModule,
     MatExpansionModule,
     MatListModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
