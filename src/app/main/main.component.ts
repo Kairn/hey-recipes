@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ChipChange, ChipType } from '../chipset/chipset.component';
 
@@ -74,6 +75,8 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   @ViewChild('rawDataInput') rawDataInput!: ElementRef<HTMLInputElement>;
 
+  constructor(private _snackBar: MatSnackBar) { }
+
   ngOnInit(): void {
     this._defaultData = this.rawData;
     this._reloadRawData();
@@ -132,6 +135,9 @@ export class MainComponent implements OnInit, AfterViewInit {
       this.ingredientsRollup.sort((i1, i2) => i1.name.localeCompare(i2.name));
       this.showSummary = true;
     } else {
+      this._snackBar.open('Pick a meal', '🍆', {
+        duration: 4000,
+      });
       this.showSummary = false;
     }
   }
@@ -159,6 +165,9 @@ export class MainComponent implements OnInit, AfterViewInit {
     } catch (error) {
       console.error("Cannot parse raw JSON.");
       console.error(error);
+      this._snackBar.open('Bad data', '🥲', {
+        duration: 4000,
+      });
       this.rawData = this._defaultData;
       this._reloadRawData();
     }
