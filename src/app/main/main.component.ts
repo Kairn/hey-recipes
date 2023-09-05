@@ -93,6 +93,20 @@ export class MainComponent implements OnInit, AfterViewInit {
     this._filterMeals();
   }
 
+  findUnselectedMeals(): Meal[] {
+    return this.leftMeals.filter(m => m.amount === 0).concat(this.rightMeals.filter(m => m.amount === 0));
+  }
+
+  rollMeal(count: number) {
+    let unselected = this.findUnselectedMeals();
+    while (count-- > 0) {
+      // Roll a random index
+      let rolled = Math.floor(Math.random() * unselected.length);
+      unselected[rolled].amount += 1;
+      unselected.splice(rolled, 1);
+    }
+  }
+
   doSummary() {
     this.mealsRollup = [];
     this.ingredientsRollup = [];
@@ -139,10 +153,12 @@ export class MainComponent implements OnInit, AfterViewInit {
   applyRawData() {
     try {
       let tempData = JSON.parse(this.rawDataInput.nativeElement.value);
+      this._validateRawData(tempData);
       this.rawData = tempData;
       this._reloadRawData();
     } catch (error) {
       console.error("Cannot parse raw JSON.");
+      console.error(error);
       this.rawData = this._defaultData;
       this._reloadRawData();
     }
@@ -212,6 +228,57 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.filteredMeals = [];
 
     this._filterMeals();
+  }
+
+  private _validateRawData(rawData: any) {
+    let tags: Chip[] = rawData['tags'];
+    let ingredients: Chip[] = rawData['ingredients'];
+    let meals: Meal[] = rawData['meals'];
+
+    let idSet = new Set<number>();
+    let nameSet = new Set<string>();
+
+    // Check duplicate tags
+    for (let tag of tags) {
+      if (idSet.has(tag.id)) {
+        throw new Error(`Duplicate Tag ID <${tag.id}> found`);
+      }
+      idSet.add(tag.id);
+      if (nameSet.has(tag.name)) {
+        throw new Error(`Duplicate Tag name <${tag.name}> found`);
+      }
+      nameSet.add(tag.name);
+    }
+
+    idSet.clear();
+    nameSet.clear();
+
+    // Check for duplicate ingredients
+    for (let ingredient of ingredients) {
+      if (idSet.has(ingredient.id)) {
+        throw new Error(`Duplicate Tag ID <${ingredient.id}> found`);
+      }
+      idSet.add(ingredient.id);
+      if (nameSet.has(ingredient.name)) {
+        throw new Error(`Duplicate Tag name <${ingredient.name}> found`);
+      }
+      nameSet.add(ingredient.name);
+    }
+
+    idSet.clear();
+    nameSet.clear();
+
+    // Check for duplicate meals
+    for (let meal of meals) {
+      if (idSet.has(meal.id)) {
+        throw new Error(`Duplicate Tag ID <${meal.id}> found`);
+      }
+      idSet.add(meal.id);
+      if (nameSet.has(meal.name)) {
+        throw new Error(`Duplicate Tag name <${meal.name}> found`);
+      }
+      nameSet.add(meal.name);
+    }
   }
 
   _dbg() {
