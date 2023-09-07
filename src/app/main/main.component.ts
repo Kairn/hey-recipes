@@ -64,6 +64,8 @@ export class MainComponent implements OnInit, AfterViewInit {
   filteredIngredients!: Chip[];
   filteredMeals!: Meal[];
 
+  // TODO: Support storing meal selection state
+
   leftMeals!: Meal[];
   rightMeals!: Meal[];
 

@@ -4,8 +4,9 @@ $result-inner-size: 900px;
 $result-inner-small: 700px;
 
 #main-box {
-    margin-top: 0.5rem;
+    padding: 0.5rem 0 1.5rem;
     min-height: 200px;
+    background-image: url(../../assets/bg/main_bg.svg);
 }
 
 #title-box {
@@ -122,7 +123,6 @@ app-chipset {
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1.5rem;
 
     >button {
         width: 124px;
