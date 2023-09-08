@@ -1,9 +1,9 @@
 <div id="main-box">
     <div id="title-box" (click)="_dbg()">Explore delicious treats</div>
     <div id="chipset-container">
-        <app-chipset [type]="TAG" [allChips]="allTags" [filteredChips]="filteredTags"
+        <app-chipset [type]="TAG" [allChips]="allTags" [filteredChips]="userData.userTags"
             (chipChangeEvent)="processChipChange($event)"></app-chipset>
-        <app-chipset [type]="INGREDIENT" [allChips]="allIngredients" [filteredChips]="filteredIngredients"
+        <app-chipset [type]="INGREDIENT" [allChips]="allIngredients" [filteredChips]="userData.userIngredients"
             (chipChangeEvent)="processChipChange($event)"></app-chipset>
     </div>
     <div id="meals-container" [ngClass]="{'no-meals': leftMeals.length < 1}">
@@ -21,12 +21,12 @@
                 <mat-icon>restart_alt</mat-icon>
                 Reset
             </button>
-            <button mat-raised-button extended color="primary" [disabled]="findUnselectedMeals().length < 1"
+            <button mat-raised-button extended color="primary" [disabled]="unselectedMeals.length < 1"
                 (click)="rollMeal(1)">
                 <mat-icon>casino</mat-icon>
                 Roll 1
             </button>
-            <button mat-raised-button extended color="primary" [disabled]="findUnselectedMeals().length < 3"
+            <button mat-raised-button extended color="primary" [disabled]="unselectedMeals.length < 3"
                 (click)="rollMeal(3)">
                 <mat-icon>casino</mat-icon>
                 Roll 3

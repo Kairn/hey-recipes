@@ -40,6 +40,27 @@ export class RawData {
   }
 }
 
+export class UserData {
+  userTags: Chip[];
+  userIngredients: Chip[];
+  userMeals: Meal[];
+  isBlank: boolean;
+
+  constructor(userData: any) {
+    if (userData) {
+      this.userTags = userData['userTags'];
+      this.userIngredients = userData['userIngredients'];
+      this.userMeals = userData['userMeals'];
+      this.isBlank = false;
+    } else {
+      this.userTags = [];
+      this.userIngredients = [];
+      this.userMeals = [];
+      this.isBlank = true;
+    }
+  }
+}
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -53,6 +74,9 @@ export class MainComponent implements OnInit, AfterViewInit {
   rawDataDisplay = '';
   @Output() rawDataUpdateEvent = new EventEmitter<RawData>();
 
+  @Input() userData!: UserData;
+  @Output() userDataUpdateEvent = new EventEmitter<UserData>();
+
   readonly TAG = ChipType.TAG;
   readonly INGREDIENT = ChipType.INGREDIENT;
 
@@ -60,11 +84,7 @@ export class MainComponent implements OnInit, AfterViewInit {
   allIngredients!: Chip[];
   allMeals!: Meal[];
 
-  filteredTags!: Chip[];
-  filteredIngredients!: Chip[];
-  filteredMeals!: Meal[];
-
-  // TODO: Support storing meal selection state
+  unselectedMeals!: Meal[];
 
   leftMeals!: Meal[];
   rightMeals!: Meal[];
@@ -81,7 +101,9 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this._defaultData = this.rawData;
-    this._reloadRawData();
+    this._reloadRawData(false);
+    this.unselectedMeals = this.userData.userMeals.filter(m => m.amount === 0);
+    this.userData.isBlank = false;
   }
 
   ngAfterViewInit(): void {
@@ -90,26 +112,28 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   processChipChange(change: ChipChange) {
     if (change.type === this.TAG) {
-      this.filteredTags = change.filteredChips;
+      this.userData.userTags = change.filteredChips;
     } else if (change.type === this.INGREDIENT) {
-      this.filteredIngredients = change.filteredChips;
+      this.userData.userIngredients = change.filteredChips;
     }
 
     this._filterMeals();
-  }
-
-  findUnselectedMeals(): Meal[] {
-    return this.leftMeals.filter(m => m.amount === 0).concat(this.rightMeals.filter(m => m.amount === 0));
+    this.unselectedMeals = this.userData.userMeals.filter(m => m.amount === 0);
+    this.userDataUpdateEvent.emit(this.userData);
   }
 
   rollMeal(count: number) {
-    let unselected = this.findUnselectedMeals();
+    const unselected = this.unselectedMeals;
+    if (unselected.length < 1) {
+      return;
+    }
     while (count-- > 0) {
       // Roll a random index
       let rolled = Math.floor(Math.random() * unselected.length);
       unselected[rolled].amount += 1;
       unselected.splice(rolled, 1);
     }
+    this.userDataUpdateEvent.emit(this.userData);
   }
 
   doSummary() {
@@ -117,7 +141,7 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.ingredientsRollup = [];
 
     let iMap = new Map<string, number>();
-    for (let meal of this.filteredMeals) {
+    for (let meal of this.userData.userMeals) {
       if (meal.amount < 1) {
         continue;
       }
@@ -146,11 +170,13 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   resetSummary() {
     this.allMeals.forEach(meal => meal.amount = 0);
-    this.filteredTags = [];
-    this.filteredIngredients = [];
-    this.filteredMeals = this.allMeals.filter(m => true);
+    this.userData.userTags = [];
+    this.userData.userIngredients = [];
+    this.userData.userMeals = this.allMeals.filter(m => true);
     this._distributeMeals();
     this.showSummary = false;
+    this.userDataUpdateEvent.emit(this.userData);
+    this.unselectedMeals = this.userData.userMeals.filter(m => m.amount === 0);
   }
 
   openRawData() {
@@ -163,7 +189,7 @@ export class MainComponent implements OnInit, AfterViewInit {
       let tempData = JSON.parse(this.rawDataInput.nativeElement.value);
       this._validateRawData(tempData);
       this.rawData = tempData;
-      this._reloadRawData();
+      this._reloadRawData(true);
     } catch (error) {
       console.error("Cannot parse raw JSON.");
       console.error(error);
@@ -171,21 +197,23 @@ export class MainComponent implements OnInit, AfterViewInit {
         duration: 4000,
       });
       this.rawData = this._defaultData;
-      this._reloadRawData();
+      this._reloadRawData(true);
     }
     this.showRawData = false;
     this.rawDataUpdateEvent.emit(this.rawData);
+    this.userDataUpdateEvent.emit(this.userData);
+    this.unselectedMeals = this.userData.userMeals.filter(m => m.amount === 0);
   }
 
   private _filterMeals() {
-    this.filteredMeals = this.allMeals.filter(meal => this._isMealDisplay(meal));
+    this.userData.userMeals = this.allMeals.filter(meal => this._isMealDisplay(meal));
     this._distributeMeals();
   }
 
   private _isMealDisplay(meal: Meal): boolean {
     let display = true;
-    let tList = this.filteredTags.map(t => t.id);
-    let iList = this.filteredIngredients.map(i => i.id);
+    let tList = this.userData.userTags.map(t => t.id);
+    let iList = this.userData.userIngredients.map(i => i.id);
 
     if (tList.length > 0) {
       display = false;
@@ -211,12 +239,12 @@ export class MainComponent implements OnInit, AfterViewInit {
   private _distributeMeals() {
     this.leftMeals = [];
     this.rightMeals = [];
-    let rightCount = Math.floor(this.filteredMeals.length / 2);
-    for (let i = 0; i < this.filteredMeals.length - rightCount; ++i) {
-      this.leftMeals.push(this.filteredMeals[i]);
+    let rightCount = Math.floor(this.userData.userMeals.length / 2);
+    for (let i = 0; i < this.userData.userMeals.length - rightCount; ++i) {
+      this.leftMeals.push(this.userData.userMeals[i]);
     }
-    for (let i = this.filteredMeals.length - rightCount; i < this.filteredMeals.length; ++i) {
-      this.rightMeals.push(this.filteredMeals[i]);
+    for (let i = this.userData.userMeals.length - rightCount; i < this.userData.userMeals.length; ++i) {
+      this.rightMeals.push(this.userData.userMeals[i]);
     }
   }
 
@@ -229,16 +257,21 @@ export class MainComponent implements OnInit, AfterViewInit {
     return '';
   }
 
-  private _reloadRawData() {
+  private _reloadRawData(resetUserData: boolean) {
     this.allTags = this.rawData['tags'];
     this.allIngredients = this.rawData['ingredients'];
     this.allMeals = this.rawData['meals'];
-
-    this.filteredTags = [];
-    this.filteredIngredients = [];
-    this.filteredMeals = [];
-
-    this._filterMeals();
+    this.allMeals.forEach(m => {
+      if (!m.amount) {
+        m.amount = 0;
+      }
+    })
+    if (resetUserData || this.userData.isBlank) {
+      this.userData.userTags = [];
+      this.userData.userIngredients = [];
+      this.userData.userMeals = this.allMeals.filter(m => true);
+    }
+    this._distributeMeals();
   }
 
   private _validateRawData(rawData: any) {

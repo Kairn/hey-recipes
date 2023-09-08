@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { RawData } from '../main/main.component';
+import { RawData, UserData } from '../main/main.component';
+import { CookieData } from '../app.component';
 
 export const HEY_RECIPE_CAPTURE = 'hey_recipe_capture';
 
@@ -13,6 +14,7 @@ export const HEY_RECIPE_CAPTURE = 'hey_recipe_capture';
 export class HeaderComponent implements OnInit {
 
   @Input() rawData!: RawData;
+  @Input() userData!: UserData;
 
   constructor(private _snackBar: MatSnackBar) { }
 
@@ -21,7 +23,11 @@ export class HeaderComponent implements OnInit {
   }
 
   capture() {
-    localStorage.setItem(HEY_RECIPE_CAPTURE, JSON.stringify(this.rawData));
+    const cookieData: CookieData = {
+      rawData: this.rawData,
+      userData: this.userData,
+    }
+    localStorage.setItem(HEY_RECIPE_CAPTURE, JSON.stringify(cookieData));
     this._snackBar.open('Data captured', '🍕', {
       duration: 4000,
     });

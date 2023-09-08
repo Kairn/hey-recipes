@@ -15,7 +15,9 @@ export class RecipeComponent implements OnInit {
   picUrl!: string;
 
   ngOnInit(): void {
-    this.meal.amount = 0;
+    if (!this.meal.amount) {
+      this.meal.amount = 0;
+    }
     this.picUrl = this.meal.picUrl ? this.meal.picUrl : '../../assets/meal-placeholder.svg';
   }
 
