@@ -5,14 +5,13 @@ import { Chip, Meal } from '../main/main.component';
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.scss']
+  styleUrls: ['./recipe.component.scss'],
 })
 export class RecipeComponent implements OnInit {
-
   @Input() allIngredients!: Chip[];
   @Input() meal!: Meal;
 
-  @Output() amountUpdateEvent = new EventEmitter<void>;
+  @Output() amountUpdateEvent = new EventEmitter<void>();
 
   picUrl!: string;
 
@@ -20,7 +19,9 @@ export class RecipeComponent implements OnInit {
     if (!this.meal.amount) {
       this.meal.amount = 0;
     }
-    this.picUrl = this.meal.picUrl ? this.meal.picUrl : '../../assets/meal-placeholder.svg';
+    this.picUrl = this.meal.picUrl
+      ? this.meal.picUrl
+      : '../../assets/meal-placeholder.svg';
   }
 
   moreMeal() {

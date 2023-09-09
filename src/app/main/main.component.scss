@@ -1,190 +1,189 @@
-@import '../../imports.scss';
+@import "../../imports.scss";
 
 $result-inner-size: 900px;
 $result-inner-small: 700px;
 
 #main-box {
-    padding: 0.5rem 0 1.5rem;
-    min-height: 200px;
-    background-image: url(../../assets/bg/main_bg.svg);
+  padding: 0.5rem 0 1.5rem;
+  min-height: 200px;
+  background-image: url(../../assets/bg/main_bg.svg);
 }
 
 #title-box {
-    text-align: center;
-    font-size: 32px;
-    margin: 2rem 0;
-    padding: 1rem;
+  text-align: center;
+  font-size: 32px;
+  margin: 2rem 0;
+  padding: 1rem;
 }
 
 #chipset-container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
-    margin-bottom: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 app-chipset {
-    max-width: 100%;
-    padding: 1rem;
-    margin: 0 3rem;
-    min-height: 80px;
+  max-width: 100%;
+  padding: 1rem;
+  margin: 0 3rem;
+  min-height: 80px;
 }
 
 #meals-container {
-    min-height: 400px;
-    padding: 1rem 4rem;
+  min-height: 400px;
+  padding: 1rem 4rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+
+  &.no-meals {
+    min-height: 100px;
+  }
+
+  #no-meals {
+    font-size: 18px;
+  }
+
+  > div {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-
-    &.no-meals {
-        min-height: 100px;
-    }
-
-    #no-meals {
-        font-size: 18px;
-    }
-
-    >div {
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        margin: 0 3.5rem;
-    }
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 3.5rem;
+  }
 }
 
 #result-container {
-    padding: 2rem 1rem;
+  padding: 2rem 1rem;
 }
 
 #result-actions {
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 
-    >button {
-        width: 124px;
-        margin: 0.5rem 1.5rem;
-    }
+  > button {
+    width: 124px;
+    margin: 0.5rem 1.5rem;
+  }
 }
 
 #results {
-    margin: 3rem 1.5rem 1rem;
+  margin: 3rem 1.5rem 1rem;
 
-    &.result-no-show {
-        display: none;
+  &.result-no-show {
+    display: none;
+  }
+
+  > div {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 2rem;
+  }
+
+  > mat-list {
+    background-color: $basic-color;
+    // max-width: 90%;
+    width: $result-inner-size;
+    margin: auto;
+    border-radius: 5px;
+    padding-left: 1.5rem;
+
+    > div {
+      font-size: 20px;
+      font-style: italic;
     }
-
-    >div {
-        text-align: center;
-        font-size: 22px;
-        margin-bottom: 2rem;
-    }
-
-    >mat-list {
-        background-color: $basic-color;
-        // max-width: 90%;
-        width: $result-inner-size;
-        margin: auto;
-        border-radius: 5px;
-        padding-left: 1.5rem;
-
-        >div {
-            font-size: 20px;
-            font-style: italic;
-        }
-    }
+  }
 }
 
 #data-container {
-    padding: 0 1rem;
+  padding: 0 1rem;
 }
 
 #data-box {
-    margin: 0 1.5rem;
+  margin: 0 1.5rem;
 
-    >mat-form-field {
-        display: block;
-        width: $result-inner-size;
-        margin: 0.5rem auto 0;
-    }
+  > mat-form-field {
+    display: block;
+    width: $result-inner-size;
+    margin: 0.5rem auto 0;
+  }
 }
 
 #data-actions {
-    padding: 0.5rem;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
+  padding: 0.5rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 
-    >button {
-        width: 124px;
-        margin: 0.5rem 1.5rem;
-    }
+  > button {
+    width: 124px;
+    margin: 0.5rem 1.5rem;
+  }
 }
 
 @media (max-width: 1100px) {
-    #results {
-        >mat-list {
-            width: $result-inner-small;
-        }
+  #results {
+    > mat-list {
+      width: $result-inner-small;
     }
+  }
 
-    #data-box {
-        >mat-form-field {
-            width: $result-inner-small;
-        }
+  #data-box {
+    > mat-form-field {
+      width: $result-inner-small;
     }
+  }
 }
 
 @media (max-width: 900px) {
-    app-chipset {
-        margin: 0 1rem;
-    }
+  app-chipset {
+    margin: 0 1rem;
+  }
 }
 
 @media (max-width: 768px) {
-    #title-box {
-        font-size: 28px;
-    }
+  #title-box {
+    font-size: 28px;
+  }
 
-    #chipset-container {
-        flex-direction: column;
-    }
+  #chipset-container {
+    flex-direction: column;
+  }
 
-    app-chipset {
-        margin: 0.5rem 1rem;
-    }
+  app-chipset {
+    margin: 0.5rem 1rem;
+  }
 }
 
-
 @media (max-width: 575px) {
-    #title-box {
-        font-size: 22px;
+  #title-box {
+    font-size: 22px;
+  }
+
+  #meals-container {
+    padding: 1rem 5%;
+  }
+
+  #results {
+    > div {
+      font-size: 20px;
     }
 
-    #meals-container {
-        padding: 1rem 5%;
+    > mat-list {
+      padding-left: 1rem;
+
+      > div {
+        font-size: 18px;
+      }
     }
-
-    #results {
-        >div {
-            font-size: 20px;
-        }
-
-        >mat-list {
-            padding-left: 1rem;
-
-            >div {
-                font-size: 18px;
-            }
-        }
-    }
+  }
 }

@@ -55,6 +55,6 @@ import { RecipeComponent } from './recipe/recipe.component';
     MatSnackBarModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

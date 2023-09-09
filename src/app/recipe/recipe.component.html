@@ -1,29 +1,43 @@
 <div class="recipe-wrapper">
-    <div class="recipe-header">
-        <img [src]="picUrl" alt="meal-placeholder" onerror="this.src = '../../assets/meal-placeholder.svg'">
-        <div class="recipe-choose-box">
-            <button mat-fab color="primary" [disabled]="meal.amount >= 10" (click)="moreMeal()">
-                <mat-icon>arrow_upward</mat-icon>
-            </button>
-            <span>{{meal.amount}}</span>
-            <button mat-fab [disabled]="meal.amount < 1" (click)="fewerMeal()">
-                <mat-icon>arrow_downward</mat-icon>
-            </button>
-        </div>
+  <div class="recipe-header">
+    <img
+      [src]="picUrl"
+      alt="meal-placeholder"
+      onerror="this.src = '../../assets/meal-placeholder.svg'"
+    />
+    <div class="recipe-choose-box">
+      <button
+        mat-fab
+        color="primary"
+        [disabled]="meal.amount >= 10"
+        (click)="moreMeal()"
+      >
+        <mat-icon>arrow_upward</mat-icon>
+      </button>
+      <span>{{ meal.amount }}</span>
+      <button mat-fab [disabled]="meal.amount < 1" (click)="fewerMeal()">
+        <mat-icon>arrow_downward</mat-icon>
+      </button>
     </div>
-    <mat-expansion-panel [ngClass]="{'recipe-unsel': meal.amount < 1, 'recipe-sel': meal.amount > 0}">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{meal.name}}
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div class="recipe-desc">{{meal.desc}}</div>
-        <mat-list>
-            <mat-list-item *ngFor="let ingredient of meal.ingredients">
-                <mat-icon matListItemIcon>spa</mat-icon>
-                <div matListItemTitle>{{getIngredientName(ingredient.id)}}</div>
-                <div matListItemLine>Quantity: {{ingredient.quantity}}</div>
-            </mat-list-item>
-        </mat-list>
-    </mat-expansion-panel>
+  </div>
+  <mat-expansion-panel
+    [ngClass]="{
+      'recipe-unsel': meal.amount < 1,
+      'recipe-sel': meal.amount > 0
+    }"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ meal.name }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="recipe-desc">{{ meal.desc }}</div>
+    <mat-list>
+      <mat-list-item *ngFor="let ingredient of meal.ingredients">
+        <mat-icon matListItemIcon>spa</mat-icon>
+        <div matListItemTitle>{{ getIngredientName(ingredient.id) }}</div>
+        <div matListItemLine>Quantity: {{ ingredient.quantity }}</div>
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
 </div>

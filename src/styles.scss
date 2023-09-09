@@ -1,37 +1,37 @@
-@import './imports.scss';
+@import "./imports.scss";
 
 * {
-    box-sizing: border-box;
-    line-height: 1.0;
-    max-width: 100%;
+  box-sizing: border-box;
+  line-height: 1;
+  max-width: 100%;
 }
 
 html,
 body {
-    background-color: $bg-color;
-    color: white;
-    overflow-x: hidden;
-    user-select: text;
+  background-color: $bg-color;
+  color: white;
+  overflow-x: hidden;
+  user-select: text;
 }
 
 body {
-    height: 100%;
-    margin: 64px 0 0 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100%;
+  margin: 64px 0 0 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 img {
-    user-select: none;
-    -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 button,
 mat-form-field {
-    user-select: none;
+  user-select: none;
 }
 
 a {
-    color: unset;
-    text-decoration: none;
-    cursor: unset;
+  color: unset;
+  text-decoration: none;
+  cursor: unset;
 }

@@ -6,19 +6,18 @@ import { HEY_RECIPE_CAPTURE } from './header/header.component';
 import * as rawData from '../assets/data.json';
 
 export interface CookieData {
-  rawData: RawData,
-  userData: UserData,
+  rawData: RawData;
+  userData: UserData;
 }
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
-  rawData!: RawData
-  userData!: UserData
+  rawData!: RawData;
+  userData!: UserData;
 
   constructor() {
     // Load cookie if present
@@ -29,7 +28,7 @@ export class AppComponent implements OnInit {
         this.rawData = new RawData(parsedCookie.rawData);
         this.userData = new UserData(parsedCookie.userData);
       } catch (error) {
-        console.error("Cookie data is corrupt");
+        console.error('Cookie data is corrupt');
         this.rawData = new RawData(rawData);
         this.userData = new UserData(undefined);
       }

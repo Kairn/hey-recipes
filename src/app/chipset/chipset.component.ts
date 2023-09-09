@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, map, startWith } from 'rxjs';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
@@ -7,7 +16,7 @@ import { Chip } from '../main/main.component';
 
 export enum ChipType {
   TAG = 'tag',
-  INGREDIENT = 'ingredient'
+  INGREDIENT = 'ingredient',
 }
 
 export interface ChipChange {
@@ -18,10 +27,9 @@ export interface ChipChange {
 @Component({
   selector: 'app-chipset',
   templateUrl: './chipset.component.html',
-  styleUrls: ['./chipset.component.scss']
+  styleUrls: ['./chipset.component.scss'],
 })
 export class ChipsetComponent implements OnInit, AfterViewInit {
-
   @Input() type!: ChipType;
   @Input() allChips!: Chip[];
   @Input() filteredChips!: Chip[];
@@ -37,15 +45,18 @@ export class ChipsetComponent implements OnInit, AfterViewInit {
   @ViewChild('chipInput') chipInput!: ElementRef<HTMLInputElement>;
 
   ngOnInit() {
-    this.title = this.type === ChipType.TAG ? "Filter by tags" : "Filter by ingredients";
-    this.acLabel = this.type === ChipType.TAG ? "Tags" : "Ingredients";
+    this.title =
+      this.type === ChipType.TAG ? 'Filter by tags' : 'Filter by ingredients';
+    this.acLabel = this.type === ChipType.TAG ? 'Tags' : 'Ingredients';
     this.acFilteredOptions = this.acControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._ac_filter(value || '')),
+      map((value) => this._ac_filter(value || '')),
     );
-    this.chipOptions = this.allChips.filter(chip => {
-      return !this.filteredChips.map(fc => fc.id).includes(chip.id);
-    }).map(chip => chip.name);
+    this.chipOptions = this.allChips
+      .filter((chip) => {
+        return !this.filteredChips.map((fc) => fc.id).includes(chip.id);
+      })
+      .map((chip) => chip.name);
   }
 
   ngAfterViewInit(): void {
@@ -69,7 +80,7 @@ export class ChipsetComponent implements OnInit, AfterViewInit {
   }
 
   removeChip(id: number) {
-    this.filteredChips = this.filteredChips.filter(chip => chip.id !== id);
+    this.filteredChips = this.filteredChips.filter((chip) => chip.id !== id);
     this._ac_update();
     this.chipChangeEvent.emit({
       type: this.type,
@@ -78,15 +89,19 @@ export class ChipsetComponent implements OnInit, AfterViewInit {
   }
 
   private _ac_update() {
-    this.chipOptions = this.allChips.filter(chip => {
-      return !this.filteredChips.map(fc => fc.id).includes(chip.id);
-    }).map(chip => chip.name);
+    this.chipOptions = this.allChips
+      .filter((chip) => {
+        return !this.filteredChips.map((fc) => fc.id).includes(chip.id);
+      })
+      .map((chip) => chip.name);
     this.chipInput.nativeElement.value = '';
     this.acControl.setValue(null);
   }
 
   private _ac_filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.chipOptions.filter(option => option.toLowerCase().includes(filterValue));
+    return this.chipOptions.filter((option) =>
+      option.toLowerCase().includes(filterValue),
+    );
   }
 }

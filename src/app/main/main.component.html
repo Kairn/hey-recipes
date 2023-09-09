@@ -1,77 +1,125 @@
 <div id="main-box">
-    <div id="title-box" (click)="_dbg()">Explore delicious treats</div>
-    <div id="chipset-container">
-        <app-chipset [type]="TAG" [allChips]="allTags" [filteredChips]="userData.userTags"
-            (chipChangeEvent)="processChipChange($event)"></app-chipset>
-        <app-chipset [type]="INGREDIENT" [allChips]="allIngredients" [filteredChips]="userData.userIngredients"
-            (chipChangeEvent)="processChipChange($event)"></app-chipset>
+  <div id="title-box" (click)="_dbg()">Explore delicious treats</div>
+  <div id="chipset-container">
+    <app-chipset
+      [type]="TAG"
+      [allChips]="allTags"
+      [filteredChips]="userData.userTags"
+      (chipChangeEvent)="processChipChange($event)"
+    ></app-chipset>
+    <app-chipset
+      [type]="INGREDIENT"
+      [allChips]="allIngredients"
+      [filteredChips]="userData.userIngredients"
+      (chipChangeEvent)="processChipChange($event)"
+    ></app-chipset>
+  </div>
+  <div id="meals-container" [ngClass]="{ 'no-meals': leftMeals.length < 1 }">
+    <div id="no-meals" *ngIf="leftMeals.length < 1">
+      Oops, no meals found 😔
     </div>
-    <div id="meals-container" [ngClass]="{'no-meals': leftMeals.length < 1}">
-        <div id="no-meals" *ngIf="leftMeals.length < 1">Oops, no meals found 😔</div>
-        <div *ngIf="leftMeals.length > 0">
-            <app-recipe *ngFor="let meal of leftMeals" [allIngredients]="allIngredients" [meal]="meal"
-                (amountUpdateEvent)="onAmountUpdate()"></app-recipe>
-        </div>
-        <div *ngIf="rightMeals.length > 0">
-            <app-recipe *ngFor="let meal of rightMeals" [allIngredients]="allIngredients" [meal]="meal"
-                (amountUpdateEvent)="onAmountUpdate()"></app-recipe>
-        </div>
+    <div *ngIf="leftMeals.length > 0">
+      <app-recipe
+        *ngFor="let meal of leftMeals"
+        [allIngredients]="allIngredients"
+        [meal]="meal"
+        (amountUpdateEvent)="onAmountUpdate()"
+      ></app-recipe>
     </div>
-    <div id="result-container">
-        <div id="result-actions">
-            <button mat-raised-button extended color="primary" (click)="resetSummary()">
-                <mat-icon>restart_alt</mat-icon>
-                Reset
-            </button>
-            <button mat-raised-button extended color="primary" [disabled]="unselectedMeals.length < 1"
-                (click)="rollMeal(1)">
-                <mat-icon>casino</mat-icon>
-                Roll 1
-            </button>
-            <button mat-raised-button extended color="primary" [disabled]="unselectedMeals.length < 3"
-                (click)="rollMeal(3)">
-                <mat-icon>casino</mat-icon>
-                Roll 3
-            </button>
-            <button mat-raised-button extended color="primary" (click)="doSummary()">
-                <mat-icon>shopping_cart</mat-icon>
-                Checkout
-            </button>
-        </div>
-        <div id="results" [ngClass]="{'result-no-show': !showSummary}">
-            <div>Yum! Your meal plan summary is ready</div>
-            <mat-list>
-                <div mat-subheader>Selected recipes</div>
-                <mat-list-item *ngFor="let meal of mealsRollup">
-                    <mat-icon matListItemIcon>dinner_dining</mat-icon>
-                    <div matListItemTitle>{{meal.name}}</div>
-                    <div matListItemLine>Quantity: {{meal.amount}}</div>
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <div mat-subheader>Ingredient shopping list</div>
-                <mat-list-item *ngFor="let rollup of ingredientsRollup">
-                    <mat-icon matListItemIcon>spa</mat-icon>
-                    <div matListItemTitle>{{rollup.name}}</div>
-                    <div matListItemLine>Quantity: {{rollup.quantity}}</div>
-                </mat-list-item>
-            </mat-list>
-        </div>
+    <div *ngIf="rightMeals.length > 0">
+      <app-recipe
+        *ngFor="let meal of rightMeals"
+        [allIngredients]="allIngredients"
+        [meal]="meal"
+        (amountUpdateEvent)="onAmountUpdate()"
+      ></app-recipe>
     </div>
-    <div id="data-container">
-        <div id="data-box" *ngIf="showRawData">
-            <mat-form-field>
-                <mat-label>Raw JSON data</mat-label>
-                <textarea rows="30" matInput #rawDataInput placeholder="Missing data..."
-                    [value]="rawDataDisplay"></textarea>
-            </mat-form-field>
-        </div>
-        <div id="data-actions">
-            <button mat-raised-button color="accent" [disabled]="showRawData" (click)="openRawData()">
-                Edit
-            </button>
-            <button mat-raised-button [disabled]="!showRawData" color="warn" (click)="applyRawData()">
-                Apply
-            </button>
-        </div>
+  </div>
+  <div id="result-container">
+    <div id="result-actions">
+      <button
+        mat-raised-button
+        extended
+        color="primary"
+        (click)="resetSummary()"
+      >
+        <mat-icon>restart_alt</mat-icon>
+        Reset
+      </button>
+      <button
+        mat-raised-button
+        extended
+        color="primary"
+        [disabled]="unselectedMeals.length < 1"
+        (click)="rollMeal(1)"
+      >
+        <mat-icon>casino</mat-icon>
+        Roll 1
+      </button>
+      <button
+        mat-raised-button
+        extended
+        color="primary"
+        [disabled]="unselectedMeals.length < 3"
+        (click)="rollMeal(3)"
+      >
+        <mat-icon>casino</mat-icon>
+        Roll 3
+      </button>
+      <button mat-raised-button extended color="primary" (click)="doSummary()">
+        <mat-icon>shopping_cart</mat-icon>
+        Checkout
+      </button>
     </div>
+    <div id="results" [ngClass]="{ 'result-no-show': !showSummary }">
+      <div>Yum! Your meal plan summary is ready</div>
+      <mat-list>
+        <div mat-subheader>Selected recipes</div>
+        <mat-list-item *ngFor="let meal of mealsRollup">
+          <mat-icon matListItemIcon>dinner_dining</mat-icon>
+          <div matListItemTitle>{{ meal.name }}</div>
+          <div matListItemLine>Quantity: {{ meal.amount }}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <div mat-subheader>Ingredient shopping list</div>
+        <mat-list-item *ngFor="let rollup of ingredientsRollup">
+          <mat-icon matListItemIcon>spa</mat-icon>
+          <div matListItemTitle>{{ rollup.name }}</div>
+          <div matListItemLine>Quantity: {{ rollup.quantity }}</div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  <div id="data-container">
+    <div id="data-box" *ngIf="showRawData">
+      <mat-form-field>
+        <mat-label>Raw JSON data</mat-label>
+        <textarea
+          rows="30"
+          matInput
+          #rawDataInput
+          placeholder="Missing data..."
+          [value]="rawDataDisplay"
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <div id="data-actions">
+      <button
+        mat-raised-button
+        color="accent"
+        [disabled]="showRawData"
+        (click)="openRawData()"
+      >
+        Edit
+      </button>
+      <button
+        mat-raised-button
+        [disabled]="!showRawData"
+        color="warn"
+        (click)="applyRawData()"
+      >
+        Apply
+      </button>
+    </div>
+  </div>
 </div>

@@ -1,53 +1,53 @@
-@import '../../imports.scss';
+@import "../../imports.scss";
 
 .nav-menu {
-    display: none;
+  display: none;
 }
 
 .nav-bar {
-    position: fixed;
-    top: 0;
-    z-index: 100;
-    background-color: $primary-color;
-    box-shadow: 0 2px 4px 0 rgba($color: #000000, $alpha: 0.5);
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background-color: $primary-color;
+  box-shadow: 0 2px 4px 0 rgba($color: #000000, $alpha: 0.5);
 }
 
 .nav-spacer-small {
-    flex: 0 1 1rem;
+  flex: 0 1 1rem;
 }
 
 .nav-spacer-right-fill {
-    flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 
 .nav-button-main {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 @media (max-width: 1000px) {
-    .nav-bar {
-        justify-content: center;
-    }
+  .nav-bar {
+    justify-content: center;
+  }
 
-    .nav-menu {
-        display: block;
-        position: absolute;
-        left: 0.5rem;
-    }
+  .nav-menu {
+    display: block;
+    position: absolute;
+    left: 0.5rem;
+  }
 
-    .nav-button {
-        display: none;
-    }
+  .nav-button {
+    display: none;
+  }
 
-    .nav-button-main {
-        font-size: 16px;
-    }
+  .nav-button-main {
+    font-size: 16px;
+  }
 
-    .nav-spacer-small {
-        display: none;
-    }
+  .nav-spacer-small {
+    display: none;
+  }
 
-    .nav-spacer-right-fill {
-        display: none;
-    }
+  .nav-spacer-right-fill {
+    display: none;
+  }
 }

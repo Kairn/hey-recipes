@@ -1,42 +1,51 @@
 <div class="chipset-box">
-    <div class="chipset-title">{{title}}</div>
-    <div class="selected-chips">
-        <span *ngFor="let chip of filteredChips" class="chip">
-            <span>{{chip.name}}</span>
-            <mat-icon (click)="removeChip(chip.id)">cancel</mat-icon>
-        </span>
-        <span *ngIf="filteredChips.length === 0" class="chip">
-            <span>ALL</span>
-        </span>
+  <div class="chipset-title">{{ title }}</div>
+  <div class="selected-chips">
+    <span *ngFor="let chip of filteredChips" class="chip">
+      <span>{{ chip.name }}</span>
+      <mat-icon (click)="removeChip(chip.id)">cancel</mat-icon>
+    </span>
+    <span *ngIf="filteredChips.length === 0" class="chip">
+      <span>ALL</span>
+    </span>
+  </div>
+  <div class="chips-ac">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ acLabel }}</mat-label>
+      <input
+        type="text"
+        placeholder="Try typing"
+        #chipInput
+        matInput
+        [formControl]="acControl"
+        [matAutocomplete]="auto"
+      />
+      <mat-icon matSuffix>filter_list</mat-icon>
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="addChip($event)"
+      >
+        <ng-container *ngFor="let option of acFilteredOptions | async">
+          <mat-option [value]="option" *ngIf="chipOptions.includes(option)">
+            {{ option }}
+          </mat-option>
+        </ng-container>
+      </mat-autocomplete>
+    </mat-form-field>
+    <!-- The below is not used -->
+    <div class="ac-buttons">
+      <button mat-mini-fab color="primary">
+        <mat-icon>check</mat-icon>
+      </button>
     </div>
-    <div class="chips-ac">
-        <mat-form-field appearance="outline">
-            <mat-label>{{acLabel}}</mat-label>
-            <input type="text" placeholder="Try typing" #chipInput matInput [formControl]="acControl"
-                [matAutocomplete]="auto">
-            <mat-icon matSuffix>filter_list</mat-icon>
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="addChip($event)">
-                <ng-container *ngFor="let option of acFilteredOptions | async">
-                    <mat-option [value]="option" *ngIf="chipOptions.includes(option)">
-                        {{option}}
-                    </mat-option>
-                </ng-container>
-            </mat-autocomplete>
-        </mat-form-field>
-        <!-- The below is not used -->
-        <div class="ac-buttons">
-            <button mat-mini-fab color="primary">
-                <mat-icon>check</mat-icon>
-            </button>
-        </div>
-    </div>
-    <!-- The below div is unused -->
-    <div class="chips-add-box">
-        <mat-form-field appearance="outline">
-            <mat-label>New label</mat-label>
-            <input matInput>
-            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-        </mat-form-field>
-        <button mat-raised-button color="primary">Add label</button>
-    </div>
+  </div>
+  <!-- The below div is unused -->
+  <div class="chips-add-box">
+    <mat-form-field appearance="outline">
+      <mat-label>New label</mat-label>
+      <input matInput />
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Add label</button>
+  </div>
 </div>

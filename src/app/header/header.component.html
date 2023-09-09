@@ -1,71 +1,71 @@
-<mat-toolbar class="nav-bar" style="height: 64px;">
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="nav-menu">
-        <mat-icon>menu</mat-icon>
+<mat-toolbar class="nav-bar" style="height: 64px">
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="nav-menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a href="#">
+    <button mat-button color="basic" class="nav-button-main">
+      <mat-icon>set_meal</mat-icon>
+      HeyRecipes
     </button>
-    <a href="#">
-        <button mat-button color="basic" class="nav-button-main">
-            <mat-icon>set_meal</mat-icon>
-            HeyRecipes
-        </button>
-    </a>
-    <span class="nav-spacer-small"></span>
-    <a href="#why-box">
-        <button mat-button class="nav-button">
-            <mat-icon>sentiment_satisfied</mat-icon>
-            Why Us
-        </button>
-    </a>
-    <a href="#how-box">
-        <button mat-button class="nav-button">
-            <mat-icon>emoji_nature</mat-icon>
-            How It Works
-        </button>
-    </a>
-    <a href="#main-box">
-        <button mat-button class="nav-button">
-            <mat-icon>local_dining</mat-icon>
-            Meals
-        </button>
-    </a>
-    <a href="https://github.com/Kairn/hey-recipes#heyrecipes" target="_blank">
-        <button mat-button class="nav-button">
-            <mat-icon>rocket_launch</mat-icon>
-            Custom Deployment
-        </button>
-    </a>
-    <span class="nav-spacer-right-fill"></span>
-    <button mat-button color="basic" class="nav-button" (click)="capture()">
-        <mat-icon>camera</mat-icon>
-        Capture
+  </a>
+  <span class="nav-spacer-small"></span>
+  <a href="#why-box">
+    <button mat-button class="nav-button">
+      <mat-icon>sentiment_satisfied</mat-icon>
+      Why Us
     </button>
+  </a>
+  <a href="#how-box">
+    <button mat-button class="nav-button">
+      <mat-icon>emoji_nature</mat-icon>
+      How It Works
+    </button>
+  </a>
+  <a href="#main-box">
+    <button mat-button class="nav-button">
+      <mat-icon>local_dining</mat-icon>
+      Meals
+    </button>
+  </a>
+  <a href="https://github.com/Kairn/hey-recipes#heyrecipes" target="_blank">
+    <button mat-button class="nav-button">
+      <mat-icon>rocket_launch</mat-icon>
+      Custom Deployment
+    </button>
+  </a>
+  <span class="nav-spacer-right-fill"></span>
+  <button mat-button color="basic" class="nav-button" (click)="capture()">
+    <mat-icon>camera</mat-icon>
+    Capture
+  </button>
 </mat-toolbar>
 <mat-menu #menu="matMenu" id="nav-menu-column">
-    <a href="#why-box">
-        <button mat-menu-item>
-            <mat-icon>sentiment_satisfied</mat-icon>
-            Why Us
-        </button>
-    </a>
-    <a href="#how-box">
-        <button mat-menu-item>
-            <mat-icon>emoji_nature</mat-icon>
-            How It Works
-        </button>
-    </a>
-    <a href="#main-box">
-        <button mat-menu-item>
-            <mat-icon>local_dining</mat-icon>
-            Meals
-        </button>
-    </a>
-    <a href="https://github.com/Kairn/hey-recipes#heyrecipes" target="_blank">
-        <button mat-menu-item>
-            <mat-icon>rocket_launch</mat-icon>
-            Custom Deployment
-        </button>
-    </a>
-    <button mat-menu-item (click)="capture()">
-        <mat-icon>camera</mat-icon>
-        Capture
+  <a href="#why-box">
+    <button mat-menu-item>
+      <mat-icon>sentiment_satisfied</mat-icon>
+      Why Us
     </button>
+  </a>
+  <a href="#how-box">
+    <button mat-menu-item>
+      <mat-icon>emoji_nature</mat-icon>
+      How It Works
+    </button>
+  </a>
+  <a href="#main-box">
+    <button mat-menu-item>
+      <mat-icon>local_dining</mat-icon>
+      Meals
+    </button>
+  </a>
+  <a href="https://github.com/Kairn/hey-recipes#heyrecipes" target="_blank">
+    <button mat-menu-item>
+      <mat-icon>rocket_launch</mat-icon>
+      Custom Deployment
+    </button>
+  </a>
+  <button mat-menu-item (click)="capture()">
+    <mat-icon>camera</mat-icon>
+    Capture
+  </button>
 </mat-menu>

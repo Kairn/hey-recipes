@@ -12,11 +12,10 @@ export const HEY_RECIPE_CAPTURE = 'hey_recipe_capture';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
   @Input() rawData!: RawData;
   @Input() userData!: UserData;
 
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     // Init
@@ -26,7 +25,7 @@ export class HeaderComponent implements OnInit {
     const cookieData: CookieData = {
       rawData: this.rawData,
       userData: this.userData,
-    }
+    };
     localStorage.setItem(HEY_RECIPE_CAPTURE, JSON.stringify(cookieData));
     this._snackBar.open('Data captured', '🍕', {
       duration: 4000,
