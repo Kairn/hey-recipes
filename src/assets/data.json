@@ -2,186 +2,416 @@
   "tags": [
     {
       "id": 1,
-      "name": "tag1"
+      "name": "Noodle"
     },
     {
       "id": 2,
-      "name": "tag2"
+      "name": "Roll"
     },
     {
       "id": 3,
-      "name": "tag3"
+      "name": "Sandwich"
     },
     {
       "id": 4,
-      "name": "tag4"
+      "name": "Soup"
     },
     {
       "id": 5,
-      "name": "tag5"
+      "name": "Vegetarian"
     },
     {
       "id": 6,
-      "name": "tag6"
+      "name": "Spicy"
     },
     {
       "id": 7,
-      "name": "tag7"
-    },
-    {
-      "id": 8,
-      "name": "tag8"
-    },
-    {
-      "id": 9,
-      "name": "tag9"
+      "name": "Sweet"
     }
   ],
   "ingredients": [
     {
       "id": 1,
-      "name": "ingredient1"
+      "name": "Generic meat"
     },
     {
       "id": 2,
-      "name": "ingredient2"
+      "name": "Ground beef"
     },
     {
       "id": 3,
-      "name": "ingredient3"
+      "name": "Ground pork"
     },
     {
       "id": 4,
-      "name": "ingredient4"
+      "name": "Chicken"
     },
     {
       "id": 5,
-      "name": "ingredient5"
+      "name": "Potato"
     },
     {
       "id": 6,
-      "name": "ingredient6"
+      "name": "Onion"
     },
     {
       "id": 7,
-      "name": "ingredient7"
+      "name": "Mushrooms"
     },
     {
       "id": 8,
-      "name": "ingredient8"
+      "name": "Spinach"
     },
     {
       "id": 9,
-      "name": "ingredient9"
+      "name": "Cabbage"
     },
     {
       "id": 10,
-      "name": "ingredient10"
+      "name": "Scallion"
+    },
+    {
+      "id": 11,
+      "name": "Carrot"
+    },
+    {
+      "id": 12,
+      "name": "Tortilla"
+    },
+    {
+      "id": 13,
+      "name": "Ramen"
+    },
+    {
+      "id": 14,
+      "name": "Bun"
+    },
+    {
+      "id": 15,
+      "name": "Green pepper"
+    },
+    {
+      "id": 16,
+      "name": "Mayonnaise"
+    },
+    {
+      "id": 17,
+      "name": "Cheese"
+    },
+    {
+      "id": 18,
+      "name": "Spice"
+    },
+    {
+      "id": 19,
+      "name": "Sweet chili sauce"
+    },
+    {
+      "id": 20,
+      "name": "Sweet soy glaze"
+    },
+    {
+      "id": 21,
+      "name": "Hot sauce"
+    },
+    {
+      "id": 22,
+      "name": "Salsa verde"
+    },
+    {
+      "id": 23,
+      "name": "Szechuan paste"
+    },
+    {
+      "id": 24,
+      "name": "Peanut butter"
+    },
+    {
+      "id": 25,
+      "name": "Cheese dressing"
+    },
+    {
+      "id": 26,
+      "name": "Tex-mex paste"
+    },
+    {
+      "id": 27,
+      "name": "Guacamole"
+    },
+    {
+      "id": 28,
+      "name": "Chili flakes"
+    },
+    {
+      "id": 29,
+      "name": "Sesame seeds"
+    },
+    {
+      "id": 30,
+      "name": "Meat stock"
+    },
+    {
+      "id": 31,
+      "name": "Peanuts"
     }
   ],
   "meals": [
     {
       "id": 1,
-      "name": "Meal1",
+      "name": "Ramen Soup",
       "picUrl": "",
-      "desc": "This is a placeholder meal.",
-      "tags": [2, 3],
+      "desc": "Ramen cooked in tasty soup with or without meat and sesame seeds. Don't overcook ramen.",
+      "tags": [1, 4],
       "ingredients": [
         {
           "id": 1,
           "quantity": 1
         },
         {
-          "id": 6,
+          "id": 8,
+          "quantity": 1
+        },
+        {
+          "id": 28,
           "quantity": 1
         },
         {
           "id": 7,
           "quantity": 1
+        },
+        {
+          "id": 29,
+          "quantity": 1
+        },
+        {
+          "id": 13,
+          "quantity": 1
+        },
+        {
+          "id": 30,
+          "quantity": 2
         }
       ]
     },
     {
       "id": 2,
-      "name": "Meal2",
+      "name": "Loaded Taquitos",
       "picUrl": "",
-      "desc": "This is a placeholder meal.",
-      "tags": [4, 7, 1],
+      "desc": "Nicely baked taquitos loaded with meat and cheese. Cook meet and veggies first before rolling.",
+      "tags": [2],
       "ingredients": [
         {
-          "id": 8,
-          "quantity": 2
+          "id": 6,
+          "quantity": 1
         },
         {
-          "id": 10,
+          "id": 1,
+          "quantity": 1
+        },
+        {
+          "id": 26,
+          "quantity": 1
+        },
+        {
+          "id": 12,
+          "quantity": 6
+        },
+        {
+          "id": 27,
+          "quantity": 1
+        },
+        {
+          "id": 21,
+          "quantity": 1
+        },
+        {
+          "id": 18,
           "quantity": 1
         }
       ]
     },
     {
       "id": 3,
-      "name": "Meal3",
+      "name": "Firehouse Cheeseburgers",
       "picUrl": "",
-      "desc": "This is a placeholder meal.",
-      "tags": [5, 7],
+      "desc": "Beef cheeseburgers with finely toasted potatoes on the side. Toast potatoes longer than the beef.",
+      "tags": [3],
       "ingredients": [
         {
           "id": 2,
           "quantity": 1
         },
         {
-          "id": 3,
+          "id": 5,
+          "quantity": 4
+        },
+        {
+          "id": 14,
+          "quantity": 2
+        },
+        {
+          "id": 21,
           "quantity": 1
         },
         {
-          "id": 9,
+          "id": 25,
           "quantity": 1
         }
       ]
     },
     {
       "id": 4,
-      "name": "Meal4",
+      "name": "Sichuan Noodle Stir-Fry",
       "picUrl": "",
-      "desc": "This is a placeholder meal.",
-      "tags": [],
+      "desc": "Stir-fry noodles in Sichuan style. Make it really spicy.",
+      "tags": [1, 6],
       "ingredients": [
         {
-          "id": 7,
-          "quantity": 3
+          "id": 1,
+          "quantity": 1
         },
         {
           "id": 10,
-          "quantity": 1
-        },
-        {
-          "id": 8,
           "quantity": 2
         },
         {
-          "id": 2,
+          "id": 11,
           "quantity": 1
         },
         {
-          "id": 4,
+          "id": 28,
+          "quantity": 1
+        },
+        {
+          "id": 31,
+          "quantity": 1
+        },
+        {
+          "id": 24,
+          "quantity": 1
+        },
+        {
+          "id": 23,
+          "quantity": 1
+        },
+        {
+          "id": 30,
+          "quantity": 1
+        },
+        {
+          "id": 13,
           "quantity": 1
         }
       ]
     },
     {
       "id": 5,
-      "name": "Meal5",
+      "name": "Sweet Chicken Sandos",
       "picUrl": "",
-      "desc": "This is a placeholder meal.",
-      "tags": [9],
+      "desc": "Chicken sandwiches with sweet chili sauce. Make sure it is nice and sweet. Slice and cook chicken first.",
+      "tags": [3, 7],
       "ingredients": [
         {
           "id": 4,
-          "quantity": 3
+          "quantity": 1
         },
         {
-          "id": 5,
-          "quantity": 4
+          "id": 10,
+          "quantity": 2
+        },
+        {
+          "id": 9,
+          "quantity": 1
+        },
+        {
+          "id": 16,
+          "quantity": 1
+        },
+        {
+          "id": 19,
+          "quantity": 1
+        },
+        {
+          "id": 20,
+          "quantity": 1
+        },
+        {
+          "id": 14,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Beef Enchiladas Verdes",
+      "picUrl": "",
+      "desc": "Beautifully baked spicy beef enchiladas. Cook beef and veggies before rolling and baking.",
+      "tags": [2, 6],
+      "ingredients": [
+        {
+          "id": 15,
+          "quantity": 1
+        },
+        {
+          "id": 21,
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "quantity": 1
+        },
+        {
+          "id": 18,
+          "quantity": 1
+        },
+        {
+          "id": 17,
+          "quantity": 1
+        },
+        {
+          "id": 12,
+          "quantity": 6
+        },
+        {
+          "id": 22,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Beef Tortilla Melts",
+      "picUrl": "",
+      "desc": "Cut tortilla melts broiled with beef and cheese. Use large flour tortillas to fold the meet.",
+      "tags": [],
+      "ingredients": [
+        {
+          "id": 2,
+          "quantity": 1
+        },
+        {
+          "id": 12,
+          "quantity": 2
+        },
+        {
+          "id": 15,
+          "quantity": 1
+        },
+        {
+          "id": 21,
+          "quantity": 1
+        },
+        {
+          "id": 17,
+          "quantity": 1
+        },
+        {
+          "id": 16,
+          "quantity": 1
+        },
+        {
+          "id": 30,
+          "quantity": 1
         }
       ]
     }
