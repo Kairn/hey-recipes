@@ -9,10 +9,12 @@
     <div id="meals-container" [ngClass]="{'no-meals': leftMeals.length < 1}">
         <div id="no-meals" *ngIf="leftMeals.length < 1">Oops, no meals found 😔</div>
         <div *ngIf="leftMeals.length > 0">
-            <app-recipe *ngFor="let meal of leftMeals" [allIngredients]="allIngredients" [meal]="meal"></app-recipe>
+            <app-recipe *ngFor="let meal of leftMeals" [allIngredients]="allIngredients" [meal]="meal"
+                (amountUpdateEvent)="onAmountUpdate()"></app-recipe>
         </div>
         <div *ngIf="rightMeals.length > 0">
-            <app-recipe *ngFor="let meal of rightMeals" [allIngredients]="allIngredients" [meal]="meal"></app-recipe>
+            <app-recipe *ngFor="let meal of rightMeals" [allIngredients]="allIngredients" [meal]="meal"
+                (amountUpdateEvent)="onAmountUpdate()"></app-recipe>
         </div>
     </div>
     <div id="result-container">

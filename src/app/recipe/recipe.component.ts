@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { Chip, Meal } from '../main/main.component';
 
@@ -12,6 +12,8 @@ export class RecipeComponent implements OnInit {
   @Input() allIngredients!: Chip[];
   @Input() meal!: Meal;
 
+  @Output() amountUpdateEvent = new EventEmitter<void>;
+
   picUrl!: string;
 
   ngOnInit(): void {
@@ -23,10 +25,12 @@ export class RecipeComponent implements OnInit {
 
   moreMeal() {
     this.meal.amount++;
+    this.amountUpdateEvent.emit();
   }
 
   fewerMeal() {
     this.meal.amount--;
+    this.amountUpdateEvent.emit();
   }
 
   getIngredientName(id: number): string {

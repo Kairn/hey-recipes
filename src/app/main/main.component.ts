@@ -136,6 +136,11 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.userDataUpdateEvent.emit(this.userData);
   }
 
+  onAmountUpdate() {
+    this.unselectedMeals = this.userData.userMeals.filter(m => m.amount === 0);
+    this.userDataUpdateEvent.emit(this.userData);
+  }
+
   doSummary() {
     this.mealsRollup = [];
     this.ingredientsRollup = [];
@@ -254,7 +259,7 @@ export class MainComponent implements OnInit, AfterViewInit {
         return ingredient.name;
       }
     }
-    return '';
+    return 'Unknown';
   }
 
   private _reloadRawData(resetUserData: boolean) {
@@ -276,8 +281,23 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   private _validateRawData(rawData: any) {
     let tags: Chip[] = rawData['tags'];
+    if (!tags) {
+      tags = [];
+    } else if (tags.length > 50) {
+      throw new Error(`Not allowed to have more than 50 tags, got ${tags.length}`);
+    }
     let ingredients: Chip[] = rawData['ingredients'];
+    if (!ingredients) {
+      ingredients = [];
+    } else if (ingredients.length > 100) {
+      throw new Error(`Not allowed to have more than 100 ingredients, got ${ingredients.length}`);
+    }
     let meals: Meal[] = rawData['meals'];
+    if (!meals) {
+      meals = [];
+    } else if (meals.length > 100) {
+      throw new Error(`Not allowed to have more than 100 recipes, got ${meals.length}`);
+    }
 
     let idSet = new Set<number>();
     let nameSet = new Set<string>();
