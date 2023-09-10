@@ -23,10 +23,12 @@ mat-expansion-panel-header.recipe-unsel {
 .recipe-header {
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
 
   > img {
     width: $pic-size;
     height: $pic-size;
+    border-radius: 10%;
   }
 }
 

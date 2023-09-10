@@ -153,13 +153,17 @@
     {
       "id": 31,
       "name": "Peanuts"
+    },
+    {
+      "id": 32,
+      "name": "Egg"
     }
   ],
   "meals": [
     {
       "id": 1,
       "name": "Ramen Soup",
-      "picUrl": "",
+      "picUrl": "https://i.ibb.co/THT8dVQ/1.jpg",
       "desc": "Ramen cooked in tasty soup with or without meat and sesame seeds. Don't overcook ramen.",
       "tags": [1, 4],
       "ingredients": [
@@ -190,13 +194,17 @@
         {
           "id": 30,
           "quantity": 2
+        },
+        {
+          "id": 32,
+          "quantity": 2
         }
       ]
     },
     {
       "id": 2,
       "name": "Loaded Taquitos",
-      "picUrl": "",
+      "picUrl": "https://i.ibb.co/DYwLhZg/2.jpg",
       "desc": "Nicely baked taquitos loaded with meat and cheese. Cook meet and veggies first before rolling.",
       "tags": [2],
       "ingredients": [
@@ -233,7 +241,7 @@
     {
       "id": 3,
       "name": "Firehouse Cheeseburgers",
-      "picUrl": "",
+      "picUrl": "https://i.ibb.co/k9CQ9Lz/3.jpg",
       "desc": "Beef cheeseburgers with finely toasted potatoes on the side. Toast potatoes longer than the beef.",
       "tags": [3],
       "ingredients": [
@@ -262,7 +270,7 @@
     {
       "id": 4,
       "name": "Sichuan Noodle Stir-Fry",
-      "picUrl": "",
+      "picUrl": "https://i.ibb.co/6ZwHxwh/4.jpg",
       "desc": "Stir-fry noodles in Sichuan style. Make it really spicy.",
       "tags": [1, 6],
       "ingredients": [
@@ -307,7 +315,7 @@
     {
       "id": 5,
       "name": "Sweet Chicken Sandos",
-      "picUrl": "",
+      "picUrl": "https://i.ibb.co/4P04c9Q/5.jpg",
       "desc": "Chicken sandwiches with sweet chili sauce. Make sure it is nice and sweet. Slice and cook chicken first.",
       "tags": [3, 7],
       "ingredients": [
@@ -344,7 +352,7 @@
     {
       "id": 6,
       "name": "Beef Enchiladas Verdes",
-      "picUrl": "",
+      "picUrl": "https://i.ibb.co/vshPWFt/6.jpg",
       "desc": "Beautifully baked spicy beef enchiladas. Cook beef and veggies before rolling and baking.",
       "tags": [2, 6],
       "ingredients": [
@@ -381,7 +389,7 @@
     {
       "id": 7,
       "name": "Beef Tortilla Melts",
-      "picUrl": "",
+      "picUrl": "https://i.ibb.co/8mYpRWJ/7.jpg",
       "desc": "Cut tortilla melts broiled with beef and cheese. Use large flour tortillas to fold the meet.",
       "tags": [],
       "ingredients": [
