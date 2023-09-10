@@ -1,0 +1,427 @@
+{
+  "tags": [
+    {
+      "id": 1,
+      "name": "Noodle"
+    },
+    {
+      "id": 2,
+      "name": "Roll"
+    },
+    {
+      "id": 3,
+      "name": "Sandwich"
+    },
+    {
+      "id": 4,
+      "name": "Soup"
+    },
+    {
+      "id": 5,
+      "name": "Vegetarian"
+    },
+    {
+      "id": 6,
+      "name": "Spicy"
+    },
+    {
+      "id": 7,
+      "name": "Sweet"
+    }
+  ],
+  "ingredients": [
+    {
+      "id": 1,
+      "name": "Generic meat"
+    },
+    {
+      "id": 2,
+      "name": "Ground beef"
+    },
+    {
+      "id": 3,
+      "name": "Ground pork"
+    },
+    {
+      "id": 4,
+      "name": "Chicken"
+    },
+    {
+      "id": 5,
+      "name": "Potato"
+    },
+    {
+      "id": 6,
+      "name": "Onion"
+    },
+    {
+      "id": 7,
+      "name": "Mushrooms"
+    },
+    {
+      "id": 8,
+      "name": "Spinach"
+    },
+    {
+      "id": 9,
+      "name": "Cabbage"
+    },
+    {
+      "id": 10,
+      "name": "Scallion"
+    },
+    {
+      "id": 11,
+      "name": "Carrot"
+    },
+    {
+      "id": 12,
+      "name": "Tortilla"
+    },
+    {
+      "id": 13,
+      "name": "Ramen"
+    },
+    {
+      "id": 14,
+      "name": "Bun"
+    },
+    {
+      "id": 15,
+      "name": "Green pepper"
+    },
+    {
+      "id": 16,
+      "name": "Mayonnaise"
+    },
+    {
+      "id": 17,
+      "name": "Cheese"
+    },
+    {
+      "id": 18,
+      "name": "Spice"
+    },
+    {
+      "id": 19,
+      "name": "Sweet chili sauce"
+    },
+    {
+      "id": 20,
+      "name": "Sweet soy glaze"
+    },
+    {
+      "id": 21,
+      "name": "Hot sauce"
+    },
+    {
+      "id": 22,
+      "name": "Salsa verde"
+    },
+    {
+      "id": 23,
+      "name": "Szechuan paste"
+    },
+    {
+      "id": 24,
+      "name": "Peanut butter"
+    },
+    {
+      "id": 25,
+      "name": "Cheese dressing"
+    },
+    {
+      "id": 26,
+      "name": "Tex-mex paste"
+    },
+    {
+      "id": 27,
+      "name": "Guacamole"
+    },
+    {
+      "id": 28,
+      "name": "Chili flakes"
+    },
+    {
+      "id": 29,
+      "name": "Sesame seeds"
+    },
+    {
+      "id": 30,
+      "name": "Meat stock"
+    },
+    {
+      "id": 31,
+      "name": "Peanuts"
+    },
+    {
+      "id": 32,
+      "name": "Egg"
+    }
+  ],
+  "meals": [
+    {
+      "id": 1,
+      "name": "Ramen Soup",
+      "picUrl": "https://i.ibb.co/THT8dVQ/1.jpg",
+      "desc": "Ramen cooked in tasty soup with or without meat and sesame seeds. Don't overcook ramen.",
+      "tags": [1, 4],
+      "ingredients": [
+        {
+          "id": 1,
+          "quantity": 1
+        },
+        {
+          "id": 8,
+          "quantity": 1
+        },
+        {
+          "id": 28,
+          "quantity": 1
+        },
+        {
+          "id": 7,
+          "quantity": 1
+        },
+        {
+          "id": 29,
+          "quantity": 1
+        },
+        {
+          "id": 13,
+          "quantity": 1
+        },
+        {
+          "id": 30,
+          "quantity": 2
+        },
+        {
+          "id": 32,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Loaded Taquitos",
+      "picUrl": "https://i.ibb.co/DYwLhZg/2.jpg",
+      "desc": "Nicely baked taquitos loaded with meat and cheese. Cook meet and veggies first before rolling.",
+      "tags": [2],
+      "ingredients": [
+        {
+          "id": 6,
+          "quantity": 1
+        },
+        {
+          "id": 1,
+          "quantity": 1
+        },
+        {
+          "id": 26,
+          "quantity": 1
+        },
+        {
+          "id": 12,
+          "quantity": 6
+        },
+        {
+          "id": 27,
+          "quantity": 1
+        },
+        {
+          "id": 21,
+          "quantity": 1
+        },
+        {
+          "id": 18,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Firehouse Cheeseburgers",
+      "picUrl": "https://i.ibb.co/k9CQ9Lz/3.jpg",
+      "desc": "Beef cheeseburgers with finely toasted potatoes on the side. Toast potatoes longer than the beef.",
+      "tags": [3],
+      "ingredients": [
+        {
+          "id": 2,
+          "quantity": 1
+        },
+        {
+          "id": 5,
+          "quantity": 4
+        },
+        {
+          "id": 14,
+          "quantity": 2
+        },
+        {
+          "id": 21,
+          "quantity": 1
+        },
+        {
+          "id": 25,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Sichuan Noodle Stir-Fry",
+      "picUrl": "https://i.ibb.co/6ZwHxwh/4.jpg",
+      "desc": "Stir-fry noodles in Sichuan style. Make it really spicy.",
+      "tags": [1, 6],
+      "ingredients": [
+        {
+          "id": 1,
+          "quantity": 1
+        },
+        {
+          "id": 10,
+          "quantity": 2
+        },
+        {
+          "id": 11,
+          "quantity": 1
+        },
+        {
+          "id": 28,
+          "quantity": 1
+        },
+        {
+          "id": 31,
+          "quantity": 1
+        },
+        {
+          "id": 24,
+          "quantity": 1
+        },
+        {
+          "id": 23,
+          "quantity": 1
+        },
+        {
+          "id": 30,
+          "quantity": 1
+        },
+        {
+          "id": 13,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Sweet Chicken Sandos",
+      "picUrl": "https://i.ibb.co/4P04c9Q/5.jpg",
+      "desc": "Chicken sandwiches with sweet chili sauce. Make sure it is nice and sweet. Slice and cook chicken first.",
+      "tags": [3, 7],
+      "ingredients": [
+        {
+          "id": 4,
+          "quantity": 1
+        },
+        {
+          "id": 10,
+          "quantity": 2
+        },
+        {
+          "id": 9,
+          "quantity": 1
+        },
+        {
+          "id": 16,
+          "quantity": 1
+        },
+        {
+          "id": 19,
+          "quantity": 1
+        },
+        {
+          "id": 20,
+          "quantity": 1
+        },
+        {
+          "id": 14,
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Beef Enchiladas Verdes",
+      "picUrl": "https://i.ibb.co/vshPWFt/6.jpg",
+      "desc": "Beautifully baked spicy beef enchiladas. Cook beef and veggies before rolling and baking.",
+      "tags": [2, 6],
+      "ingredients": [
+        {
+          "id": 15,
+          "quantity": 1
+        },
+        {
+          "id": 21,
+          "quantity": 1
+        },
+        {
+          "id": 2,
+          "quantity": 1
+        },
+        {
+          "id": 18,
+          "quantity": 1
+        },
+        {
+          "id": 17,
+          "quantity": 1
+        },
+        {
+          "id": 12,
+          "quantity": 6
+        },
+        {
+          "id": 22,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Beef Tortilla Melts",
+      "picUrl": "https://i.ibb.co/8mYpRWJ/7.jpg",
+      "desc": "Cut tortilla melts broiled with beef and cheese. Use large flour tortillas to fold the meet.",
+      "tags": [],
+      "ingredients": [
+        {
+          "id": 2,
+          "quantity": 1
+        },
+        {
+          "id": 12,
+          "quantity": 2
+        },
+        {
+          "id": 15,
+          "quantity": 1
+        },
+        {
+          "id": 21,
+          "quantity": 1
+        },
+        {
+          "id": 17,
+          "quantity": 1
+        },
+        {
+          "id": 16,
+          "quantity": 1
+        },
+        {
+          "id": 30,
+          "quantity": 1
+        }
+      ]
+    }
+  ]
+}
