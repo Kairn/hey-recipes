@@ -8,7 +8,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "echo notest",
-    "deploy": "ng deploy --base-href=/hey-recipes/"
+    "deploy": "ng deploy --base-href=/hey-recipes/",
+    "clean": "rm -rf .angular dist node_modules"
   },
   "private": true,
   "dependencies": {
