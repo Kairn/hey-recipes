@@ -21,7 +21,7 @@ export class RecipeComponent implements OnInit {
     }
     this.picUrl = this.meal.picUrl
       ? this.meal.picUrl
-      : '../../assets/meal-placeholder.svg';
+      : './assets/meal-placeholder.svg';
   }
 
   moreMeal() {
